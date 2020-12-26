@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hashim khanzada\\source\\repos\\InterCityWebAPI\\InterCityWebAPI\\InterCityWebAPI.csproj": {}
+    "C:\\Users\\hashim khanzada\\source\\repos\\InterCityClone\\InterCityWebAPI\\InterCityWebAPI\\InterCityWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hashim khanzada\\source\\repos\\InterCityWebAPI\\InterCityWebAPI\\InterCityWebAPI.csproj": {
+    "C:\\Users\\hashim khanzada\\source\\repos\\InterCityClone\\InterCityWebAPI\\InterCityWebAPI\\InterCityWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hashim khanzada\\source\\repos\\InterCityWebAPI\\InterCityWebAPI\\InterCityWebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\hashim khanzada\\source\\repos\\InterCityClone\\InterCityWebAPI\\InterCityWebAPI\\InterCityWebAPI.csproj",
         "projectName": "InterCityWebAPI",
-        "projectPath": "C:\\Users\\hashim khanzada\\source\\repos\\InterCityWebAPI\\InterCityWebAPI\\InterCityWebAPI.csproj",
+        "projectPath": "C:\\Users\\hashim khanzada\\source\\repos\\InterCityClone\\InterCityWebAPI\\InterCityWebAPI\\InterCityWebAPI.csproj",
         "packagesPath": "C:\\Users\\hashim khanzada\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hashim khanzada\\source\\repos\\InterCityWebAPI\\InterCityWebAPI\\obj\\",
+        "outputPath": "C:\\Users\\hashim khanzada\\source\\repos\\InterCityClone\\InterCityWebAPI\\InterCityWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -58,6 +58,28 @@
               "noWarn": [
                 "NU1605"
               ]
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
