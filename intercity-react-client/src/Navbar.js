@@ -1,6 +1,7 @@
 import React from 'react'
 import './Navbar.css'
 import Avatar from "@material-ui/core/Avatar"
+import { Link } from "react-router-dom";
 
 function Navbar() {
     return (
@@ -14,16 +15,16 @@ function Navbar() {
                 </div>
 
                 <div className="navbar__booking">
-                    <h4>BOOK</h4> 
-                    <h4>MANAGE</h4>
+                    <Link to="/">BOOK</Link> 
+                    <Link to="/">MANAGE</Link> 
                 </div>
                 
                 <div className="navbar__info">
-                    <h5>Day Tours</h5>
-                    <h5>FlexiPass</h5>
-                    <h5>TravelPass</h5>
-                    <h5>Contact</h5>
-                    <h5>Help  Info</h5>
+                    <Link to="/">Day Tours</Link>
+                    <Link to="/">FlexiPass</Link>
+                    <Link to="/">TravelPass</Link>
+                    <Link to="/">Contact</Link>
+                    <Link to="/">Help  Info</Link>
                 </div>
             </div>
             

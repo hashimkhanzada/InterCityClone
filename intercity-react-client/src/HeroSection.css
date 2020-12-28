@@ -1,0 +1,58 @@
+.hero {
+    background:linear-gradient(
+        rgba(0, 0, 0, 0.4), 
+        rgba(0, 0, 0, 0.4)
+      ), url("https://www.intercity.co.nz/resources/themes/intercity/images/bg-homepage.jpg?v=1.3.1") center center/cover no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    object-fit:contain;
+}
+
+.hero__bookingContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero__bookingContainer > h2 {
+    margin-bottom: 40px; 
+    font-size: 40px;
+    font-weight: 500;
+    color: white;
+}
+
+.row1 {
+    display: flex;
+}
+
+.row2 {
+    display: flex; 
+}
+
+.hero__button {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero__button > Button {
+    background-color: #47c132;
+    border: 1px solid #47c132;
+    color: white;
+    cursor: pointer;
+    text-transform: inherit;
+    line-height: 1;
+    font-size: 1rem;
+    font-weight: 700; 
+    padding: 10px 20px;
+}
+
+.hero__button > Button:hover {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    background-color: #77d168;
+}

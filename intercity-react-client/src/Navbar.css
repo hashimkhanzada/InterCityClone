@@ -2,12 +2,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: solid 1px lightgray;
+    border-bottom: solid 1px lightgray;  
+    width: 100%;
+    position: fixed;
+    background-color: white;
+    z-index: 999;
 }
 
 .navbar__logo {
-    height: 40px;
-    object-fit: contain;
+    height: 40px; 
     padding: 0px 10px;
 }
 
@@ -24,12 +27,20 @@
     padding: 18px;
 }
 
-.navbar__booking > h4 {
+.navbar__booking > a {
     display: flex;
     align-items: center;
     padding: 0 15px;
     color: gray;
     font-size: medium;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s;
+}
+
+.navbar__booking > a:hover {
+    color: black;
+    text-decoration: underline;
 }
 
 .navbar__info {
@@ -38,12 +49,20 @@
     padding: 18px;
 }
 
-.navbar__info > h5 {
+.navbar__info > a {
     display: flex;
     align-items: center;
     padding: 0 15px;
     color: gray;
     font-size:small;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s;
+}
+
+.navbar__info > a:hover {
+    color: black;
+    text-decoration: underline;
 }
 
 .navbar__right {

@@ -1,0 +1,19 @@
+.formInput__input {
+    margin: 15px;
+}
+
+.formInput__input > input{
+    display: flex;
+    align-items: center;
+    height: 2.8rem;
+    width: 380px; 
+    border: 1px solid #47c132;
+    border-radius: 7px;
+    font-size: 1.2rem;
+    font-weight:500;
+    padding: 5px 10px;
+}
+
+.formInput__input > input:focus{
+    outline-width: 0;
+}
