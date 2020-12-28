@@ -1,0 +1,61 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: solid 1px lightgray;
+}
+
+.navbar__logo {
+    height: 40px;
+    object-fit: contain;
+    padding: 0px 10px;
+}
+
+.navbar__left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar__booking {
+    display: flex;
+    align-items: center; 
+    border-left: solid 1px lightgray;
+    border-right: solid 1px lightgray;
+    padding: 18px;
+}
+
+.navbar__booking > h4 {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    color: gray;
+    font-size: medium;
+}
+
+.navbar__info {
+    display: flex;
+    align-items: center;
+    padding: 18px;
+}
+
+.navbar__info > h5 {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    color: gray;
+    font-size:small;
+}
+
+.navbar__right {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.navbar__right > h5 {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    color: gray;
+    font-size:small;
+}
