@@ -29,7 +29,7 @@ namespace InterCityWebAPI.Controllers
 
         // GET: api/Booking/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BookingModel>> GetBookingModel(string id)
+        public async Task<ActionResult<BookingModel>> GetBookingModel(Guid id)
         {
             var bookingModel = await _context.Bookings.FindAsync(id);
 
@@ -44,7 +44,7 @@ namespace InterCityWebAPI.Controllers
         // PUT: api/Booking/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBookingModel(string id, BookingModel bookingModel)
+        public async Task<IActionResult> PutBookingModel(Guid id, BookingModel bookingModel)
         {
             if (id != bookingModel.ReferenceNumber)
             {
@@ -78,28 +78,14 @@ namespace InterCityWebAPI.Controllers
         public async Task<ActionResult<BookingModel>> PostBookingModel(BookingModel bookingModel)
         {
             _context.Bookings.Add(bookingModel);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (BookingModelExists(bookingModel.ReferenceNumber))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetBookingModel", new { id = bookingModel.ReferenceNumber }, bookingModel);
         }
 
         // DELETE: api/Booking/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBookingModel(string id)
+        public async Task<IActionResult> DeleteBookingModel(Guid id)
         {
             var bookingModel = await _context.Bookings.FindAsync(id);
             if (bookingModel == null)
@@ -113,7 +99,7 @@ namespace InterCityWebAPI.Controllers
             return NoContent();
         }
 
-        private bool BookingModelExists(string id)
+        private bool BookingModelExists(Guid id)
         {
             return _context.Bookings.Any(e => e.ReferenceNumber == id);
         }

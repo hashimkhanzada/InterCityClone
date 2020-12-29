@@ -9,7 +9,10 @@ namespace InterCityWebAPI.Data.Models
     public class CityModel
     {
         [Key]
-        public int CityId { get; set; }
         public string CityName { get; set; }
+        public string BusStop { get; set; }
+
+        public ICollection<RouteModel> FromRoutes { get; set; }
+        public ICollection<RouteModel> ToRoutes { get; set; }
     }
 }

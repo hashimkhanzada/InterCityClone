@@ -29,7 +29,7 @@ namespace InterCityWebAPI.Controllers
 
         // GET: api/City/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<CityModel>> GetCityModel(int id)
+        public async Task<ActionResult<CityModel>> GetCityModel(string id)
         {
             var cityModel = await _context.Cities.FindAsync(id);
 
@@ -44,9 +44,9 @@ namespace InterCityWebAPI.Controllers
         // PUT: api/City/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCityModel(int id, CityModel cityModel)
+        public async Task<IActionResult> PutCityModel(string id, CityModel cityModel)
         {
-            if (id != cityModel.CityId)
+            if (id != cityModel.CityName)
             {
                 return BadRequest();
             }
@@ -78,14 +78,28 @@ namespace InterCityWebAPI.Controllers
         public async Task<ActionResult<CityModel>> PostCityModel(CityModel cityModel)
         {
             _context.Cities.Add(cityModel);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (CityModelExists(cityModel.CityName))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-            return CreatedAtAction("GetCityModel", new { id = cityModel.CityId }, cityModel);
+            return CreatedAtAction("GetCityModel", new { id = cityModel.CityName }, cityModel);
         }
 
         // DELETE: api/City/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCityModel(int id)
+        public async Task<IActionResult> DeleteCityModel(string id)
         {
             var cityModel = await _context.Cities.FindAsync(id);
             if (cityModel == null)
@@ -99,9 +113,9 @@ namespace InterCityWebAPI.Controllers
             return NoContent();
         }
 
-        private bool CityModelExists(int id)
+        private bool CityModelExists(string id)
         {
-            return _context.Cities.Any(e => e.CityId == id);
+            return _context.Cities.Any(e => e.CityName == id);
         }
     }
 }

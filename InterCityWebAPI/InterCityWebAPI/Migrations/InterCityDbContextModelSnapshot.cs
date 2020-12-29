@@ -18,7 +18,8 @@ namespace InterCityWebAPI.Migrations
 
             modelBuilder.Entity("InterCityWebAPI.Data.Models.BookingModel", b =>
                 {
-                    b.Property<string>("ReferenceNumber")
+                    b.Property<Guid>("ReferenceNumber")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("EmailAddress")
@@ -42,21 +43,25 @@ namespace InterCityWebAPI.Migrations
                     b.Property<int>("RouteId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<float>("TotalCost")
+                        .HasColumnType("REAL");
+
                     b.HasKey("ReferenceNumber");
+
+                    b.HasIndex("RouteId");
 
                     b.ToTable("Bookings");
                 });
 
             modelBuilder.Entity("InterCityWebAPI.Data.Models.CityModel", b =>
                 {
-                    b.Property<int>("CityId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("CityName")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("CityId");
+                    b.Property<string>("BusStop")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CityName");
 
                     b.ToTable("Cities");
                 });
@@ -67,33 +72,74 @@ namespace InterCityWebAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("ArrivalTime")
+                    b.Property<string>("ArrivalTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DepartureDate")
+                    b.Property<string>("DepartureDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DepartureTime")
+                    b.Property<string>("DepartureTime")
                         .HasColumnType("TEXT");
 
                     b.Property<float>("FlexiPrice")
                         .HasColumnType("REAL");
 
-                    b.Property<string>("FromCity")
+                    b.Property<string>("FromCityName")
                         .HasColumnType("TEXT");
 
                     b.Property<float>("StandardPrice")
                         .HasColumnType("REAL");
 
-                    b.Property<string>("ToCity")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("TravelTime")
+                    b.Property<string>("ToCityName")
                         .HasColumnType("TEXT");
 
                     b.HasKey("RouteId");
 
+                    b.HasIndex("FromCityName");
+
+                    b.HasIndex("ToCityName");
+
                     b.ToTable("Routes");
+                });
+
+            modelBuilder.Entity("InterCityWebAPI.Data.Models.BookingModel", b =>
+                {
+                    b.HasOne("InterCityWebAPI.Data.Models.RouteModel", "Route")
+                        .WithMany("Bookings")
+                        .HasForeignKey("RouteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Route");
+                });
+
+            modelBuilder.Entity("InterCityWebAPI.Data.Models.RouteModel", b =>
+                {
+                    b.HasOne("InterCityWebAPI.Data.Models.CityModel", "FromCity")
+                        .WithMany("FromRoutes")
+                        .HasForeignKey("FromCityName")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("InterCityWebAPI.Data.Models.CityModel", "ToCity")
+                        .WithMany("ToRoutes")
+                        .HasForeignKey("ToCityName")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("FromCity");
+
+                    b.Navigation("ToCity");
+                });
+
+            modelBuilder.Entity("InterCityWebAPI.Data.Models.CityModel", b =>
+                {
+                    b.Navigation("FromRoutes");
+
+                    b.Navigation("ToRoutes");
+                });
+
+            modelBuilder.Entity("InterCityWebAPI.Data.Models.RouteModel", b =>
+                {
+                    b.Navigation("Bookings");
                 });
 #pragma warning restore 612, 618
         }

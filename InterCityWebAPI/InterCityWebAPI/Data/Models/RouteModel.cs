@@ -11,15 +11,19 @@ namespace InterCityWebAPI.Data.Models
     {
         [Key]
         public int RouteId { get; set; }
-        public string FromCity { get; set; }
-        public string ToCity { get; set; }
-        public DateTime DepartureDate { get; set; }
-        public DateTime DepartureTime { get; set; }
-        public DateTime ArrivalTime { get; set; }
+
+        public string FromCityName { get; set; }
+        public string ToCityName { get; set; }
+
+        public CityModel FromCity { get; set; }
+        public CityModel ToCity { get; set; }
+
+        public string DepartureDate { get; set; }
+        public string DepartureTime { get; set; }
+        public string ArrivalTime { get; set; }
         public float StandardPrice { get; set; }
         public float FlexiPrice { get; set; }
 
-        [NotMapped]
-        public string TravelTime { get; set; }
+        public ICollection<BookingModel> Bookings { get; set; }
     }
 }
