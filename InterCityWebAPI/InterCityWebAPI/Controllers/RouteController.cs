@@ -41,6 +41,15 @@ namespace InterCityWebAPI.Controllers
             return routeModel;
         }
 
+        // GET: api/Route/getRouteByNameDate
+        [HttpGet("getRouteByNameDate")]
+        public async Task<ActionResult<IEnumerable<RouteModel>>> GetRouteByNameDate(string fromCity, string toCity, string date)
+        {
+            List<RouteModel> routes = await _context.Routes.Where(p => p.FromCityName.ToLower().Replace(" ", "") == fromCity.ToLower().Replace(" ", "") && p.ToCityName.ToLower().Replace(" ", "") == toCity.ToLower().Replace(" ", "") && p.DepartureDate.ToLower().Replace(" ", "") == date.ToLower().Replace(" ", "")).ToListAsync();
+
+            return routes;
+        }
+
         // PUT: api/Route/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -77,6 +86,12 @@ namespace InterCityWebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<RouteModel>> PostRouteModel(RouteModel routeModel)
         {
+            routeModel.StandardPrice = 30;
+            routeModel.FlexiPrice = 40;
+            routeModel.DepartureDate = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+            routeModel.DepartureTime = DateTime.Now.ToString("hh:mm tt");
+            routeModel.ArrivalTime = DateTime.Now.ToString("hh:mm tt");
+
             _context.Routes.Add(routeModel);
             await _context.SaveChangesAsync();
 
@@ -98,6 +113,7 @@ namespace InterCityWebAPI.Controllers
 
             return NoContent();
         }
+
 
         private bool RouteModelExists(int id)
         {

@@ -27,18 +27,13 @@ namespace InterCityWebAPI.Controllers
             return await _context.Cities.ToListAsync();
         }
 
-        // GET: api/City/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<CityModel>> GetCityModel(string id)
+        // GET: api/City/Wanganui
+        [HttpGet("{searchTerm}")]
+        public async Task<ActionResult<IEnumerable<CityModel>>> GetCityModel(string searchTerm)
         {
-            var cityModel = await _context.Cities.FindAsync(id);
+            List<CityModel> result = await _context.Cities.Where(p => p.CityName.ToLower().Replace("-", "").Replace(" ", "").Contains(searchTerm.ToLower().Replace(" ", ""))).Distinct().ToListAsync();
 
-            if (cityModel == null)
-            {
-                return NotFound();
-            }
-
-            return cityModel;
+            return result;
         }
 
         // PUT: api/City/5
@@ -112,6 +107,8 @@ namespace InterCityWebAPI.Controllers
 
             return NoContent();
         }
+
+        
 
         private bool CityModelExists(string id)
         {
