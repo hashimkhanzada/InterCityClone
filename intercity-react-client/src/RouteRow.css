@@ -1,0 +1,58 @@
+.routeRow {
+  background-color: #fdfdfd;
+  margin: 10px;
+  border: solid 1px lightgray;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 5px;
+}
+
+.routeRow__timeInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 80px;
+  width: 100%;
+}
+
+.routeRow__price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 50px;
+  border-left: solid 1px lightgray;
+}
+
+.routeRow__fareTime > h2 {
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+.routeRow__fareTime > p {
+  font-size: 12px;
+  font-weight: lighter;
+  color: gray;
+}
+
+.routeRow__tripInfo {
+  font-size: 14px;
+}
+
+.routeRow__price > p {
+  font-size: 12px;
+  font-weight: lighter;
+  color: gray;
+}
+
+.routeRow__price > h2 {
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+.routeRow__tripLine {
+  border-top: solid 1px lightgray;
+  width: 10%;
+}

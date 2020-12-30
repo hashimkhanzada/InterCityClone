@@ -1,80 +1,80 @@
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: solid 1px lightgray;  
-    width: 100%;
-    position: fixed;
-    background-color: white;
-    z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: solid 1px lightgray;
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  z-index: 999;
 }
 
 .navbar__logo {
-    height: 40px; 
-    padding: 0px 10px;
+  height: 40px;
+  padding: 0px 10px;
 }
 
 .navbar__left {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .navbar__booking {
-    display: flex;
-    align-items: center; 
-    border-left: solid 1px lightgray;
-    border-right: solid 1px lightgray;
-    padding: 18px;
+  display: flex;
+  align-items: center;
+  border-left: solid 1px lightgray;
+  border-right: solid 1px lightgray;
+  padding: 18px;
 }
 
 .navbar__booking > a {
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
-    color: gray;
-    font-size: medium;
-    text-decoration: none;
-    font-weight: 700;
-    transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  color: gray;
+  font-size: medium;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s;
 }
 
 .navbar__booking > a:hover {
-    color: black;
-    text-decoration: underline;
+  color: black;
+  text-decoration: underline;
 }
 
 .navbar__info {
-    display: flex;
-    align-items: center;
-    padding: 18px;
+  display: flex;
+  align-items: center;
+  padding: 18px;
 }
 
 .navbar__info > a {
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
-    color: gray;
-    font-size:small;
-    text-decoration: none;
-    font-weight: 700;
-    transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  color: gray;
+  font-size: small;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s;
 }
 
 .navbar__info > a:hover {
-    color: black;
-    text-decoration: underline;
+  color: black;
+  text-decoration: underline;
 }
 
 .navbar__right {
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
 }
 
 .navbar__right > h5 {
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
-    color: gray;
-    font-size:small;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  color: gray;
+  font-size: small;
 }

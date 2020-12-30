@@ -43,10 +43,10 @@ namespace InterCityWebAPI.Controllers
 
         // GET: api/Route/getRouteByNameDate
         [HttpGet("getRouteByNameDate")]
-        public async Task<ActionResult<IEnumerable<RouteModel>>> GetRouteByNameDate(string fromCity, string toCity, string date)
+        public async Task<ActionResult<IEnumerable<RouteModel>>> GetRouteByNameDate(string fromCity, string toCity)
         {
-            List<RouteModel> routes = await _context.Routes.Where(p => p.FromCityName.ToLower().Replace(" ", "") == fromCity.ToLower().Replace(" ", "") && p.ToCityName.ToLower().Replace(" ", "") == toCity.ToLower().Replace(" ", "") && p.DepartureDate.ToLower().Replace(" ", "") == date.ToLower().Replace(" ", "")).ToListAsync();
-
+            List<RouteModel> routes = await _context.Routes.Where(p => p.FromCityName.ToLower().Replace(" ", "") == fromCity.ToLower().Replace(" ", "") && p.ToCityName.ToLower().Replace(" ", "") == toCity.ToLower().Replace(" ", "")).ToListAsync();
+             //&& p.DepartureDate.ToLower().Replace(" ", "") == date.ToLower().Replace(" ", "")
             return routes;
         }
 
