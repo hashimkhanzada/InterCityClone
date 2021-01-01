@@ -15,11 +15,14 @@ function FormInput({
   decrement,
   swapIcon,
   swapCities,
+  fullSpan,
 }) {
   return (
     <>
       <div className="formInput">
-        <div className="formInput__input">
+        <div
+          className={`formInput__input ${!fullSpan && "input__defaultWidth"}`}
+        >
           {isDate ? (
             <DatePicker
               style={{
@@ -27,7 +30,7 @@ function FormInput({
                 display: "flex",
                 alignItems: "start",
                 height: "2.8rem",
-                width: "380px",
+                width: "360px",
                 padding: "5px 10px",
               }}
               variant="inline"
@@ -50,6 +53,7 @@ function FormInput({
                 value={value}
                 onChange={changeText}
                 placeholder={placeholderText}
+                className={`${fullSpan && "Input__fullSpan"}`}
               />
 
               {swapIcon && (

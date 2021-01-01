@@ -81,6 +81,10 @@
   padding: 10px 20px;
 }
 
+.hero__button > Button:disabled {
+  background-color: gray;
+}
+
 .hero__button > Button:hover {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   background-color: white;

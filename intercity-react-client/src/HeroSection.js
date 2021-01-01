@@ -10,13 +10,22 @@ import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import moment from "moment";
-
+import ContactDetails from "./ContactDetails";
 function HeroSection() {
   const history = useHistory();
   const [fromCity, setFromCity] = useState("Wanganui");
   const [toCity, setToCity] = useState("Palmerston North");
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [passengers, setPassengers] = useState(1);
+  const [noOfPassengers, setnoOfPassengers] = useState(1);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [fareType, setFareType] = useState("");
+  const [totalCost, setTotalCost] = useState(0);
+  const [routeId, setRouteId] = useState(0);
+  const [contactDetailsPage, setContactDetailsPage] = useState(false);
+  const [userDetails, setUserDetails] = useState({});
 
   const [routes, setRoutes] = useState([]);
 
@@ -33,13 +42,34 @@ function HeroSection() {
       });
   };
 
+  const updateUserDetails = () => {
+    setUserDetails({
+      firstName,
+      lastName,
+      emailAddress,
+      phoneNumber,
+      noOfPassengers,
+      fareType,
+      totalCost,
+      routeId,
+    });
+  };
+
+  const submitUserDetails = async () => {
+    const submit = await instance
+      .post("/Booking", userDetails)
+      .then(function (response) {
+        console.log(response);
+      });
+  };
+
   const incrementPassengers = () => {
-    setPassengers(passengers + 1);
+    setnoOfPassengers(noOfPassengers + 1);
   };
 
   const decrementPassengers = () => {
-    if (passengers > 0) {
-      setPassengers(passengers - 1);
+    if (noOfPassengers > 0) {
+      setnoOfPassengers(noOfPassengers - 1);
     }
   };
 
@@ -52,12 +82,20 @@ function HeroSection() {
     setRoutes([]);
   };
 
+  const addBooking = (price, id, seatType) => {
+    setFareType(seatType);
+    setTotalCost(price);
+    setRouteId(id);
+    setContactDetailsPage(true);
+  };
+
   return (
     <div>
       <div className="hero">
         <div
           className={`hero__bookingContainer ${
-            routes.length > 0 && "hideForm"
+            (routes.length > 0 && "hideForm") ||
+            (contactDetailsPage && "hideForm")
           }`}
         >
           <div className="hero__bookingForm">
@@ -86,23 +124,29 @@ function HeroSection() {
                 />
               </MuiPickersUtilsProvider>
               <FormInput
-                value={passengers}
+                value={noOfPassengers}
                 isNumber
                 increment={incrementPassengers}
                 decrement={decrementPassengers}
               />
             </div>
             <div className="hero__button">
-              <Button variant="outlined" onClick={searchPage}>
-                Search
-              </Button>
+              {toCity && fromCity ? (
+                <Button variant="outlined" onClick={searchPage}>
+                  Search
+                </Button>
+              ) : (
+                <Button variant="outlined" onClick={searchPage} disabled>
+                  Search
+                </Button>
+              )}
             </div>
           </div>
         </div>
 
         <div
           className={`hero__results ${
-            routes.length > 0 && "hero__results__appear"
+            routes.length > 0 && !contactDetailsPage && "hero__results__appear"
           }`}
         >
           <div className="hero__editSearchContainer">
@@ -112,7 +156,7 @@ function HeroSection() {
             </h2>
 
             <div className="hero__editSearchButton">
-              <Button variant="outlined" onClick={editSearch}>
+              <Button variant="outlined" onClick={editSearch} disable>
                 <EditIcon />
                 Edit Search
               </Button>
@@ -122,6 +166,7 @@ function HeroSection() {
             {routes?.map((route) => (
               <>
                 <RouteRow
+                  key={route.routeId}
                   departureTime={route.departureTime}
                   arrivalTime={route.arrivalTime}
                   standardPrice={route.standardPrice}
@@ -132,12 +177,36 @@ function HeroSection() {
                   flexiSeatPrice={route.flexiPrice}
                   fromCityBusStop={route.fromCity.busStop}
                   toCityBusStop={route.toCity.busStop}
-                  numberOfAdults={passengers}
+                  numberOfAdults={noOfPassengers}
+                  bookStandard={() =>
+                    addBooking(route.standardPrice, route.routeId, "standard")
+                  }
+                  bookFlexi={() =>
+                    addBooking(route.standardPrice, route.routeId, "flexi")
+                  }
                 />
               </>
             ))}
           </div>
         </div>
+        {contactDetailsPage && (
+          <ContactDetails
+            firstName={firstName}
+            firstNameChange={(e) => setFirstName(e.target.value)}
+            lastName={lastName}
+            lastNameChange={(e) => setLastName(e.target.value)}
+            email={emailAddress}
+            emailChange={(e) => setEmailAddress(e.target.value)}
+            phoneNumber={phoneNumber}
+            phoneNumberChange={(e) => setPhoneNumber(e.target.value)}
+            goBack={() => {
+              setContactDetailsPage(false);
+            }}
+            goForward={() => {
+              updateUserDetails();
+            }}
+          />
+        )}
       </div>
     </div>
   );

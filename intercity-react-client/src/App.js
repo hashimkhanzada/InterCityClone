@@ -9,9 +9,7 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/book">
-            <h1>Book</h1>
-          </Route>
+          <Route path="/book"></Route>
 
           <Route path="/">
             <HeroSection />

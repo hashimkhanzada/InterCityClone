@@ -1,0 +1,67 @@
+.contactDetails {
+  background: rgb(233, 233, 233);
+  height: 94vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contactDetails > h1 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 17px;
+  margin-top: 10%;
+}
+
+.contactDetails > p > span {
+  color: #35a321;
+}
+
+.contactDetails > p > span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.contactDetails__formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.contactDetails__formContainer__buttons {
+  display: flex;
+}
+
+.contactDetails__formContainer__row1 {
+  display: flex;
+}
+
+.contactDetails__formContainer__row2 {
+  width: 100%;
+}
+
+.contactDetails__formContainer__row3 {
+  display: flex;
+}
+
+.contactDetails__formContainer__buttons > Button {
+  background-color: #47c132;
+  border: 1px solid #47c132;
+  color: white;
+  cursor: pointer;
+  text-transform: inherit;
+  line-height: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  margin: 10px 10px;
+}
+
+.contactDetails__formContainer__buttons > Button:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  color: #47c132;
+}

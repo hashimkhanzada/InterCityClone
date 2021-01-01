@@ -20,6 +20,8 @@ function RouteRow({
   fromCityBusStop,
   toCityBusStop,
   numberOfAdults,
+  bookStandard,
+  bookFlexi,
 }) {
   const [routeDetails, setRouteDetails] = useState(false);
 
@@ -119,13 +121,19 @@ function RouteRow({
               {numberOfAdults} {numberOfAdults > 1 ? "Adults" : "Adult"}
             </div>
             <div className="routeRow__info__booking__options">
-              <div className="routeRow__info__booking__optionsinfo1">
+              <div
+                className="routeRow__info__booking__optionsinfo1"
+                onClick={bookStandard}
+              >
                 <BookingOption
                   seatType="Standard"
                   seatPrice={standardSeatPrice}
                 />
               </div>
-              <div className="routeRow__info__booking__optionsinfo2">
+              <div
+                className="routeRow__info__booking__optionsinfo2"
+                onClick={bookFlexi}
+              >
                 <BookingOption seatType="Flexi" seatPrice={flexiSeatPrice} />
               </div>
             </div>
