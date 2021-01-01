@@ -4,7 +4,8 @@
   justify-content: space-between;
   border-bottom: solid 1px lightgray;
   width: 100%;
-  position: fixed;
+  position: sticky;
+  top: 0;
   background-color: white;
   z-index: 999;
 }

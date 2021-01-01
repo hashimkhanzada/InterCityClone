@@ -1,0 +1,54 @@
+.bookingOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 1px lightgray;
+  padding: 20px 15px;
+}
+
+.bookingOption > h2 {
+  font-size: 32px;
+  font-weight: 500;
+  display: flex;
+  align-items: baseline;
+  margin: 5px;
+}
+
+.bookingOption > h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 5px;
+}
+
+.bookingOption > p {
+  font-size: 12px;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.small {
+  font-size: 22px;
+}
+
+.bookingOption > Button {
+  background-color: #47c132;
+  border: 1px solid #47c132;
+  color: white;
+  cursor: pointer;
+  line-height: 1;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 0;
+  margin: 5px;
+  width: 80%;
+}
+
+.bookingOption:hover > Button {
+  background-color: rgb(0, 206, 206);
+  border: 1px solid rgba(0, 206, 206);
+  color: white;
+}
+
+.bookingOption:hover {
+  cursor: pointer;
+}

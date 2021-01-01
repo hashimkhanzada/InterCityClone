@@ -1,12 +1,113 @@
 .routeRow {
   background-color: #fdfdfd;
   margin: 10px;
-  border: solid 1px lightgray;
-  display: flex;
-  justify-content: space-between;
   width: 100%;
   max-width: 900px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  border: solid 1px rgb(177, 177, 177);
+}
+
+.routeRow__border {
+  border: solid 4px #42b82e;
+}
+
+.routeRow__main {
+  background-color: #fdfdfd;
+  transition: transform 300ms;
+
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.routeRow__main:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.routeRow__infoContainer__hide {
+  display: none;
+}
+
+.routeRow__info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.routeRow__info__details__cities > h3 {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgb(97, 97, 97);
+  margin-top: 5px;
+}
+
+.routeRow__info__details__cities > hr {
+  margin: 20px 0;
+}
+
+.routeRow__info__details {
+  width: 100%;
+}
+
+.routeRow__info__details__summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0 20px 0;
+  border-top: solid 1px lightgray;
+  border-bottom: solid 1px lightgray;
+}
+
+.routeRow__info__details__icons > svg {
+  color: gray;
+}
+
+.routeRow__info__booking__container {
+  margin-left: 40px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0 20px 0;
+  border-top: solid 1px lightgray;
+}
+
+.routeRow__info__booking__seats {
+  display: flex;
+  align-items: center;
+}
+
+.routeRow__info__booking__options {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 40px;
+  margin-top: 10px;
+}
+
+.routeRow__info__booking__optionsinfo1 {
+  display: flex;
+  flex: 1;
+}
+
+.routeRow__info__booking__optionsinfo2 {
+  display: flex;
+  flex: 1;
+}
+
+.routeRow__logo {
+  height: 30px;
+  color: gray;
+}
+
+.routeRow__infoContainer {
+  border-top: solid 1px lightgray;
+  padding: 40px;
 }
 
 .routeRow__timeInfo {
@@ -17,6 +118,24 @@
   width: 100%;
 }
 
+.routeRow__info__booking__extraInfo > p {
+  font-size: 15px;
+}
+
+.routeRow__info__booking__extraInfo > p > span {
+  color: #35a321;
+  cursor: pointer;
+}
+.routeRow__info__booking__extraInfo > p > span:hover {
+  color: #35a321;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.routeRow__info__booking__extraInfo {
+  margin: 15px 0 0 0;
+}
+
 .routeRow__price {
   display: flex;
   flex-direction: column;
@@ -24,6 +143,12 @@
   justify-content: center;
   padding: 0 50px;
   border-left: solid 1px lightgray;
+}
+
+.routeRow__fareTime {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .routeRow__fareTime > h2 {
@@ -39,6 +164,9 @@
 
 .routeRow__tripInfo {
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .routeRow__price > p {
@@ -55,4 +183,75 @@
 .routeRow__tripLine {
   border-top: solid 1px lightgray;
   width: 10%;
+}
+
+.routeRow__info__details__busStops {
+  width: 100%;
+}
+
+.routeRow__info__details__busStopInfo {
+  display: flex;
+  align-items: center;
+  color: rgb(65, 65, 65);
+}
+
+.routeRow__info__details__busStopInfo > h3 {
+  margin: 10px 0 10px 15px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.routeRow__info__details__busStopInfo > p {
+  font-size: 14px;
+}
+
+.routeRow__info__details__busStopInfo > svg {
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.routeRow__info__details__busStop__duration {
+  display: flex;
+  align-items: center;
+  color: gray;
+}
+
+.routeRow__info__details__busStop__duration > h3 {
+  font-size: 14px;
+  margin: 10px 0 10px 30px;
+}
+
+.routeRow__info__details__busStop__duration > p {
+  font-size: 14px;
+}
+
+.routeRow__info__details__importantInfo {
+  border: solid 1px lightgray;
+  margin-top: 20px;
+}
+
+.routeRow__info__details__importantInfo__header {
+  display: flex;
+  color: rgb(138, 138, 138);
+  padding: 5px 10px;
+  font-size: 15px;
+  font-weight: 600;
+  align-items: center;
+  border-bottom: solid 1px lightgray;
+}
+
+.routeRow__info__details__importantInfo__header > svg {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.routeRow__info__details__importantInfo__body {
+  padding: 10px;
+  font-size: 13px;
+  color: rgb(102, 102, 102);
+}
+
+.routeRow__info__details__importantInfo__body > p {
+  margin-bottom: 10px;
 }

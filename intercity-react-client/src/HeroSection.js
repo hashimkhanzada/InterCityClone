@@ -60,7 +60,12 @@ function HeroSection() {
             </div>
           </div>
         </div>
-        {routes.length > 0 ? (
+
+        <div
+          className={`hero__results ${
+            routes.length > 0 && "hero__results__appear"
+          }`}
+        >
           <div className="hero__editSearchContainer">
             <p></p>
             <h2>
@@ -74,17 +79,23 @@ function HeroSection() {
               </Button>
             </div>
           </div>
-        ) : null}
-
-        {routes?.map((route) => (
-          <>
-            <RouteRow
-              departureTime={route.departureTime}
-              arrivalTime={route.arrivalTime}
-              standardPrice={route.standardPrice}
-            />
-          </>
-        ))}
+          <div className="hero__routeResults">
+            {routes?.map((route) => (
+              <>
+                <RouteRow
+                  departureTime={route.departureTime}
+                  arrivalTime={route.arrivalTime}
+                  standardPrice={route.standardPrice}
+                  fromCity={fromCity}
+                  toCity={toCity}
+                  routeId={route.routeId}
+                  standardSeatPrice={route.standardPrice}
+                  flexiSeatPrice={route.flexiPrice}
+                />
+              </>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
