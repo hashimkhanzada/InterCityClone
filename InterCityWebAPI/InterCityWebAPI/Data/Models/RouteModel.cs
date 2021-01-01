@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,6 +25,7 @@ namespace InterCityWebAPI.Data.Models
         public float StandardPrice { get; set; }
         public float FlexiPrice { get; set; }
 
+        [JsonIgnore]
         public ICollection<BookingModel> Bookings { get; set; }
     }
 }

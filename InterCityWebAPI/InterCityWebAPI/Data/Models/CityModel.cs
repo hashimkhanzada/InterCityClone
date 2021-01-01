@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,7 +13,9 @@ namespace InterCityWebAPI.Data.Models
         public string CityName { get; set; }
         public string BusStop { get; set; }
 
+        [JsonIgnore]
         public ICollection<RouteModel> FromRoutes { get; set; }
+        [JsonIgnore]
         public ICollection<RouteModel> ToRoutes { get; set; }
     }
 }

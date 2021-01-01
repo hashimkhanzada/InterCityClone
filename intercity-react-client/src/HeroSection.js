@@ -6,18 +6,27 @@ import { instance } from "./axios";
 import { useHistory } from "react-router-dom";
 import RouteRow from "./RouteRow";
 import EditIcon from "@material-ui/icons/Edit";
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import moment from "moment";
 
 function HeroSection() {
   const history = useHistory();
-  const [fromCity, setFromCity] = useState("wanganui");
-  const [toCity, setToCity] = useState("palmerston north");
+  const [fromCity, setFromCity] = useState("Wanganui");
+  const [toCity, setToCity] = useState("Palmerston North");
+  const [selectedDate, setSelectedDate] = useState("");
 
   const [routes, setRoutes] = useState([]);
 
   const searchPage = async () => {
+    const convertedDate = moment(selectedDate).format("ddd, D MMM YYYY");
+
     //TODO - refactor
     const request = await instance
-      .get(`/Route/getRouteByNameDate?fromCity=${fromCity}&toCity=${toCity}`)
+      .get(
+        `/Route/getRouteByNameDate?fromCity=${fromCity}&toCity=${toCity}&date=${convertedDate}`
+      )
       .then((response) => {
         setRoutes(response.data);
       });
@@ -26,6 +35,7 @@ function HeroSection() {
   const editSearch = () => {
     setRoutes([]);
   };
+
   return (
     <div>
       <div className="hero">
@@ -36,6 +46,7 @@ function HeroSection() {
         >
           <div className="hero__bookingForm">
             <h2>Where would you like to go?</h2>
+
             <div className="row1">
               <FormInput
                 value={fromCity}
@@ -49,10 +60,15 @@ function HeroSection() {
               />
             </div>
             <div className="row2">
-              <FormInput placeholderText="Departure Date" />
-              <FormInput placeholderText="Passengers" />
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <FormInput
+                  isDate
+                  value={selectedDate}
+                  changeText={setSelectedDate}
+                />
+                <FormInput placeholderText="Passengers" />
+              </MuiPickersUtilsProvider>
             </div>
-
             <div className="hero__button">
               <Button variant="outlined" onClick={searchPage}>
                 Search
@@ -91,6 +107,8 @@ function HeroSection() {
                   routeId={route.routeId}
                   standardSeatPrice={route.standardPrice}
                   flexiSeatPrice={route.flexiPrice}
+                  fromCityBusStop={route.fromCity.busStop}
+                  toCityBusStop={route.toCity.busStop}
                 />
               </>
             ))}

@@ -43,10 +43,10 @@ namespace InterCityWebAPI.Controllers
 
         // GET: api/Route/getRouteByNameDate
         [HttpGet("getRouteByNameDate")]
-        public async Task<ActionResult<IEnumerable<RouteModel>>> GetRouteByNameDate(string fromCity, string toCity)
+        public async Task<ActionResult<IEnumerable<RouteModel>>> GetRouteByNameDate(string fromCity, string toCity, string date)
         {
-            List<RouteModel> routes = await _context.Routes.Where(p => p.FromCityName.ToLower().Replace(" ", "") == fromCity.ToLower().Replace(" ", "") && p.ToCityName.ToLower().Replace(" ", "") == toCity.ToLower().Replace(" ", "")).ToListAsync();
-             //&& p.DepartureDate.ToLower().Replace(" ", "") == date.ToLower().Replace(" ", "")
+            List<RouteModel> routes = await _context.Routes.Where(p => p.FromCityName.ToLower().Replace(" ", "") == fromCity.ToLower().Replace(" ", "") && p.ToCityName.ToLower().Replace(" ", "") == toCity.ToLower().Replace(" ", "") && p.DepartureDate.ToLower().Replace(" ", "") == date.ToLower().Replace(" ", "")).Include(s => s.FromCity).Include(s => s.ToCity).ToListAsync();
+             
             return routes;
         }
 
@@ -88,7 +88,7 @@ namespace InterCityWebAPI.Controllers
         {
             routeModel.StandardPrice = 30;
             routeModel.FlexiPrice = 40;
-            routeModel.DepartureDate = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+            routeModel.DepartureDate = DateTime.Now.ToString("ddd, d MMM yyyy");
             routeModel.DepartureTime = DateTime.Now.ToString("hh:mm tt");
             routeModel.ArrivalTime = DateTime.Now.ToString("hh:mm tt");
 
