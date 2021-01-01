@@ -15,7 +15,8 @@ function HeroSection() {
   const history = useHistory();
   const [fromCity, setFromCity] = useState("Wanganui");
   const [toCity, setToCity] = useState("Palmerston North");
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [passengers, setPassengers] = useState(1);
 
   const [routes, setRoutes] = useState([]);
 
@@ -30,6 +31,21 @@ function HeroSection() {
       .then((response) => {
         setRoutes(response.data);
       });
+  };
+
+  const incrementPassengers = () => {
+    setPassengers(passengers + 1);
+  };
+
+  const decrementPassengers = () => {
+    if (passengers > 0) {
+      setPassengers(passengers - 1);
+    }
+  };
+
+  const swapCityNames = () => {
+    setFromCity(toCity);
+    setToCity(fromCity);
   };
 
   const editSearch = () => {
@@ -52,6 +68,8 @@ function HeroSection() {
                 value={fromCity}
                 changeText={(e) => setFromCity(e.target.value)}
                 placeholderText="From"
+                swapIcon
+                swapCities={swapCityNames}
               />
               <FormInput
                 placeholderText="To"
@@ -66,8 +84,13 @@ function HeroSection() {
                   value={selectedDate}
                   changeText={setSelectedDate}
                 />
-                <FormInput placeholderText="Passengers" />
               </MuiPickersUtilsProvider>
+              <FormInput
+                value={passengers}
+                isNumber
+                increment={incrementPassengers}
+                decrement={decrementPassengers}
+              />
             </div>
             <div className="hero__button">
               <Button variant="outlined" onClick={searchPage}>
@@ -109,6 +132,7 @@ function HeroSection() {
                   flexiSeatPrice={route.flexiPrice}
                   fromCityBusStop={route.fromCity.busStop}
                   toCityBusStop={route.toCity.busStop}
+                  numberOfAdults={passengers}
                 />
               </>
             ))}

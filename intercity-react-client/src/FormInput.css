@@ -1,8 +1,5 @@
 .formInput__input {
   margin: 15px;
-}
-
-.formInput__input > input {
   display: flex;
   align-items: center;
   height: 2.8rem;
@@ -12,8 +9,34 @@
   font-size: 1.1rem;
   font-weight: 500;
   padding: 5px 10px;
+  background-color: white;
+}
+
+.formInput__input > input {
+  height: 2.8rem;
+  width: 380px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 5px 10px;
+  border: none;
+}
+
+.counterIcon {
+  border: solid 1px rgb(194, 194, 194);
+  border-radius: 999px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.counterIcon:hover {
+  background-color: #47c132;
+  color: white;
 }
 
 .formInput__input > input:focus {
   outline-width: 0;
+}
+
+.swapIconSVG {
+  cursor: pointer;
 }

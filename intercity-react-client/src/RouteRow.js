@@ -19,6 +19,7 @@ function RouteRow({
   flexiSeatPrice,
   fromCityBusStop,
   toCityBusStop,
+  numberOfAdults,
 }) {
   const [routeDetails, setRouteDetails] = useState(false);
 
@@ -114,7 +115,8 @@ function RouteRow({
           </div>
           <div className="routeRow__info__booking__container">
             <div className="routeRow__info__booking__seats">
-              <AirlineSeatReclineExtraIcon />1 Adult
+              <AirlineSeatReclineExtraIcon />
+              {numberOfAdults} {numberOfAdults > 1 ? "Adults" : "Adult"}
             </div>
             <div className="routeRow__info__booking__options">
               <div className="routeRow__info__booking__optionsinfo1">
