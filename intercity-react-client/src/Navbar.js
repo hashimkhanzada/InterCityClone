@@ -8,11 +8,13 @@ function Navbar() {
     <div className="navbar">
       <div className="navbar__left">
         <div className="navbar__logo">
-          <img
-            className="navbar__logo"
-            src="https://www.intercity.co.nz/resources/themes/intercity/images/intercity-logo.svg"
-            alt=""
-          />
+          <Link to="/">
+            <img
+              className="navbar__logo"
+              src="https://www.intercity.co.nz/resources/themes/intercity/images/intercity-logo.svg"
+              alt=""
+            />
+          </Link>
         </div>
 
         <div className="navbar__booking">

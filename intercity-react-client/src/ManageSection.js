@@ -4,6 +4,8 @@ import FormInput from "./FormInput";
 import { Button } from "@material-ui/core";
 import ManageBooking from "./ManageBooking";
 import { instance } from "./axios";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 function ManageSection() {
   const [referenceNumber, setReferenceNumber] = useState("");
@@ -42,6 +44,29 @@ function ManageSection() {
 
         checkBooking();
       });
+  };
+
+  const deleteBooking = async () => {
+    confirmAlert({
+      title: "Confirm to submit",
+      message: "Are you sure to do this.",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: async () => {
+            const submit = await instance
+              .delete(`/Booking/${bookingReference}`)
+              .then(function (response) {
+                setReferenceNumber("");
+                setManageBookingSection(false);
+              });
+          },
+        },
+        {
+          label: "No",
+        },
+      ],
+    });
   };
 
   const checkBooking = () => {
@@ -129,6 +154,9 @@ function ManageSection() {
           routeId={routeId}
           fromCityBusStop={fromCityBusStop}
           toCityBusStop={toCityBusStop}
+          deleteBooking={() => {
+            deleteBooking();
+          }}
         />
       )}
     </>

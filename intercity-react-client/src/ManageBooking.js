@@ -19,6 +19,7 @@ function ManageBooking({
   routeId,
   fromCityBusStop,
   toCityBusStop,
+  deleteBooking,
 }) {
   const [selectedManageType, setselectedManageType] = useState(0);
 
@@ -140,7 +141,9 @@ function ManageBooking({
             </div>
           </div>
           <div className="Bookings__card__info__buttons">
-            <Button variant="outlined">Cancel Booking</Button>
+            <Button variant="outlined" onClick={deleteBooking}>
+              Cancel Booking
+            </Button>
             <Button variant="outlined" disabled>
               Change Booking
             </Button>

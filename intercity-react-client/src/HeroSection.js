@@ -11,6 +11,8 @@ import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import moment from "moment";
 import ContactDetails from "./ContactDetails";
+import BookingSummary from "./BookingSummary";
+
 function HeroSection() {
   const history = useHistory();
   const [fromCity, setFromCity] = useState("Wanganui");
@@ -26,6 +28,10 @@ function HeroSection() {
   const [routeId, setRouteId] = useState(0);
   const [contactDetailsPage, setContactDetailsPage] = useState(false);
   const [userDetails, setUserDetails] = useState({});
+  const [bookingSummaryPage, setBookingSummaryPage] = useState(false);
+  const [departureDate, setDepartureDate] = useState("");
+  const [departureTime, setDepartureTime] = useState("");
+  const [arrivalTime, setArrivalTime] = useState("");
 
   const [routes, setRoutes] = useState([]);
 
@@ -78,11 +84,21 @@ function HeroSection() {
     setRoutes([]);
   };
 
-  const addBooking = (price, id, seatType) => {
+  const addBooking = (
+    price,
+    id,
+    seatType,
+    departDate,
+    arriveTime,
+    departTime
+  ) => {
     setFareType(seatType);
     setTotalCost(price);
     setRouteId(id);
     setContactDetailsPage(true);
+    setDepartureDate(departDate);
+    setDepartureTime(arriveTime);
+    setArrivalTime(departTime);
   };
 
   return (
@@ -91,7 +107,8 @@ function HeroSection() {
         <div
           className={`hero__bookingContainer ${
             (routes.length > 0 && "hideForm") ||
-            (contactDetailsPage && "hideForm")
+            (contactDetailsPage && "hideForm") ||
+            (bookingSummaryPage && "hideForm")
           }`}
         >
           <div className="hero__bookingForm">
@@ -142,7 +159,10 @@ function HeroSection() {
 
         <div
           className={`hero__results ${
-            routes.length > 0 && !contactDetailsPage && "hero__results__appear"
+            routes.length > 0 &&
+            !contactDetailsPage &&
+            !bookingSummaryPage &&
+            "hero__results__appear"
           }`}
         >
           <div className="hero__editSearchContainer">
@@ -175,10 +195,24 @@ function HeroSection() {
                   toCityBusStop={route.toCity.busStop}
                   numberOfAdults={noOfPassengers}
                   bookStandard={() =>
-                    addBooking(route.standardPrice, route.routeId, "standard")
+                    addBooking(
+                      route.standardPrice * noOfPassengers,
+                      route.routeId,
+                      "standard",
+                      route.departureDate,
+                      route.arrivalTime,
+                      route.departureTime
+                    )
                   }
                   bookFlexi={() =>
-                    addBooking(route.standardPrice, route.routeId, "flexi")
+                    addBooking(
+                      route.flexiPrice * noOfPassengers,
+                      route.routeId,
+                      "flexi",
+                      route.departureDate,
+                      route.arrivalTime,
+                      route.departureTime
+                    )
                   }
                 />
               </>
@@ -199,6 +233,23 @@ function HeroSection() {
               setContactDetailsPage(false);
             }}
             goForward={() => {
+              setBookingSummaryPage(true);
+              setContactDetailsPage(false);
+            }}
+          />
+        )}
+        {bookingSummaryPage && (
+          <BookingSummary
+            fromCity={fromCity}
+            toCity={toCity}
+            routeId={routeId}
+            departureDate={departureDate}
+            departureTime={departureTime}
+            arrivalTime={arrivalTime}
+            fareType={fareType}
+            noOfPassengers={noOfPassengers}
+            totalCost={totalCost}
+            pay={() => {
               submitUserDetails();
             }}
           />

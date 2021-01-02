@@ -1,0 +1,203 @@
+.bookingSummary {
+  background: rgb(233, 233, 233);
+  height: 94vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.bookingSummary__summary {
+  display: flex;
+  flex-direction: column;
+  margin: 100px 30px 0 30px;
+  align-items: center;
+}
+
+.bookingSummary__summary > h1 {
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.bookingSummary__payment {
+  display: flex;
+  flex-direction: column;
+  margin: 100px 30px 0 30px;
+  align-items: center;
+}
+
+.bookingSummary__payment > h1 {
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.bookingSummary__summary__container {
+  border: solid 1px lightgray;
+  background-color: white;
+  width: 100%;
+  padding: 50px;
+}
+
+.bookingSummary__summary__container__row1 {
+  border-bottom: dashed 2px lightgray;
+  padding-bottom: 40px;
+}
+
+.bookingSummary__payment__container {
+  border: solid 1px lightgray;
+  background-color: white;
+  padding: 20px;
+}
+
+.bookingSummary__payment__container__row2 {
+  display: flex;
+  align-items: center;
+}
+
+.bookingSummary__payment__container__row2 > input {
+  margin: 0 15px 15px 15px;
+  height: 2.8rem;
+  width: 50%;
+  border: 1px solid #47c132;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 5px 10px;
+}
+
+.bookingSummary__payment__container__terms {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-left: 15px;
+}
+
+.bookingSummary__payment__container__terms > input {
+  margin-right: 10px;
+}
+
+.bookingSummary__payment__container__terms > p > span {
+  color: #35a321;
+}
+
+.bookingSummary__payment__container__terms > p > span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.bookingSummary__payment__container__total {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: flex-end;
+  margin-top: 20px;
+}
+
+.bookingSummary__payment__container__total > h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.bookingSummary__summary__container__cities {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.bookingSummary__summary__container__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.bookingSummary__summary__container__infoTime {
+  font-size: 14px;
+  margin: 10px 0;
+  line-height: 1.3;
+}
+
+.bookingSummary__summary__container__infoPrice {
+  font-size: 32px;
+}
+
+.bookingSummary__summary__container__infoPrice > h3 {
+  font-weight: 500;
+}
+
+.bookingSummary__summary__container__infoPrice > h3 > span {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.bookingSummary__summary__container__row2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.bookingSummary__summary__container__row2 > h1 {
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.btn1 > Button {
+  background-color: #47c132;
+  border: 1px solid #47c132;
+  color: white;
+  cursor: pointer;
+  text-transform: inherit;
+  line-height: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 20px 20px;
+  margin: 10px 10px;
+  width: 100%;
+  text-transform: inherit;
+}
+
+.btn1 > Button:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  color: #47c132;
+}
+
+.btn2 > Button {
+  background-color: #20a6ff;
+  border: 1px solid #20a6ff;
+  color: white;
+  cursor: pointer;
+  text-transform: inherit;
+  line-height: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 20px 20px;
+  margin: 10px 10px;
+  width: 100%;
+  text-transform: inherit;
+}
+
+.btn2 > Button:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  color: #20a6ff;
+}
+
+.bookingSummary__summary > Button {
+  background-color: white;
+  border: 1px solid #47c132;
+  color: #47c132;
+  cursor: pointer;
+  text-transform: inherit;
+  line-height: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  margin: 10px 10px;
+  text-transform: inherit;
+}
+
+.bookingSummary__summary > Button:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: #47c132;
+  color: white;
+}
