@@ -1,0 +1,272 @@
+.manageBooking {
+  background: rgb(233, 233, 233);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manageBooking > h1 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 4%;
+}
+.manageBooking > Button {
+  background-color: white;
+  border: 1px solid #47c132;
+  color: #47c132;
+  cursor: pointer;
+  text-transform: inherit;
+  line-height: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  margin: 10px 10px 120px 10px;
+}
+
+.manageBooking > Button:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: #47c132;
+  color: white;
+}
+
+.manageBooking__manageType {
+  display: flex;
+  border-bottom: solid 1px #47c132;
+  width: 750px;
+  justify-content: center;
+  align-items: center;
+}
+
+.manageBooking__manageType > p {
+  padding: 0px 92px 10px 92px;
+  font-weight: 600;
+  font-size: 18px;
+  color: gray;
+  cursor: pointer;
+}
+
+.manageBooking__manageType__selected {
+  border-bottom: solid 3px #47c132;
+}
+
+.Bookings {
+  background: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20%;
+}
+
+.Bookings > h1 {
+  font-size: 44px;
+  color: #47c132;
+  font-weight: 500;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.Bookings > p {
+  font-size: 16px;
+  width: 50%;
+}
+
+.Bookings > h2 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-top: 60px;
+}
+
+.Bookings > Button {
+  background-color: white;
+  border: 1px solid #47c132;
+  color: #47c132;
+  cursor: pointer;
+  text-transform: inherit;
+  line-height: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  margin: 20px 10px 30px 10px;
+}
+
+.Bookings > Button:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: #47c132;
+  color: white;
+}
+
+.Bookings > Button:disabled {
+  background-color: gray;
+}
+
+.Bookings__card {
+  text-align: left;
+  border: solid 1px lightgray;
+  border-radius: 5px;
+  padding: 20px;
+  width: 600px;
+  transition: transform 300ms;
+}
+
+.Bookings__card:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Bookings__card__date {
+  color: #47c132;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.Bookings__card__timesRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Bookings__card__cities {
+  font-size: 20px;
+  margin: 25px 0;
+}
+
+.Bookings__card__times {
+  font-size: 15px;
+}
+
+.Bookings__card__viewDetails {
+  font-size: 16px;
+  cursor: pointer;
+  color: #47c132;
+  font-weight: 600;
+}
+
+.Bookings__card__viewDetails:hover {
+  text-decoration: underline;
+}
+
+.Bookings__card__info {
+  text-align: left;
+  border: solid 1px lightgray;
+  border-radius: 5px;
+  padding: 20px;
+  width: 600px;
+}
+
+.Bookings__card__info__hide {
+  display: none;
+}
+
+.Bookings__card__info__passengers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px lightgray;
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+
+.Bookings__card__info__passengers > h1 {
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.Bookings__card__info__passengers > h2 {
+  font-weight: 500;
+  font-size: 14px;
+  color: gray;
+}
+
+.Bookings__card__info__summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0 20px 0;
+  border-top: solid 1px lightgray;
+  border-bottom: solid 1px lightgray;
+}
+
+.Bookings__card__info__summary_cities > h3 {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgb(97, 97, 97);
+  margin-top: 5px;
+}
+
+.Bookings__card__info__summary_icons {
+  color: gray;
+}
+
+.Bookings__card__info__busStops {
+  width: 100%;
+}
+
+.Bookings__card__info__busStopInfo {
+  display: flex;
+  align-items: center;
+  color: rgb(65, 65, 65);
+}
+
+.Bookings__card__info__busStopInfo > h3 {
+  margin: 10px 0 10px 15px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.Bookings__card__info__busStopInfo > p {
+  font-size: 14px;
+}
+
+.Bookings__card__info__busStopInfo > svg {
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.Bookings__card__info__buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.Bookings__card__info__buttons > Button {
+  background-color: #47c132;
+  border: 1px solid #47c132;
+  color: white;
+  cursor: pointer;
+  text-transform: inherit;
+  line-height: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  margin: 0 5px;
+}
+
+.Bookings__card__info__buttons > Button:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  color: #47c132;
+}
+
+.Bookings__card__info__endText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.Bookings__card__info__endText > p > span {
+  color: #35a321;
+}
+
+.Bookings__card__info__endText > p > span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

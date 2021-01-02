@@ -31,7 +31,7 @@ namespace InterCityWebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<BookingModel>> GetBookingModel(Guid id)
         {
-            var bookingModel = await _context.Bookings.FindAsync(id);
+            var bookingModel = await _context.Bookings.Where(s => s.ReferenceNumber == id).Include(s => s.Route).Include(s => s.Route.FromCity).Include(s => s.Route.ToCity).FirstOrDefaultAsync();
 
             if (bookingModel == null)
             {

@@ -2,6 +2,8 @@ import "./App.css";
 import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ManageSection from "./ManageSection";
+import ManageBooking from "./ManageBooking";
 
 function App() {
   return (
@@ -9,7 +11,9 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/book"></Route>
+          <Route path="/manage">
+            <ManageSection />
+          </Route>
 
           <Route path="/">
             <HeroSection />

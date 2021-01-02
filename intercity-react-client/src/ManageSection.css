@@ -1,0 +1,69 @@
+.manageSection {
+  background: rgb(233, 233, 233);
+  height: 94vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manageSection > h1 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 8%;
+}
+
+.manageSection > p {
+  padding-top: 40px;
+  margin-bottom: 10px;
+}
+
+.manageSection__memberType {
+  display: flex;
+  width: 574px;
+  border-bottom: solid 1px #47c132;
+  justify-content: center;
+  align-items: center;
+}
+
+.manageSection__memberType > p {
+  padding: 0px 45px 5px 45px;
+  font-weight: 600;
+  font-size: 18px;
+  color: gray;
+  cursor: pointer;
+}
+
+.manageSection__memberType__selected {
+  border-bottom: solid 3px #47c132;
+}
+
+.manageSection__formContainer {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.manageSection__formContainer > Button {
+  background-color: #47c132;
+  border: 1px solid #47c132;
+  color: white;
+  cursor: pointer;
+  text-transform: inherit;
+  line-height: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  margin: 10px 10px;
+}
+
+.manageSection__formContainer > Button:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  color: #47c132;
+}
+
+.manageSection__Hide {
+  display: none;
+}

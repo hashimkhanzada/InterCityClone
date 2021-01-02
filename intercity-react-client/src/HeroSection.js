@@ -42,22 +42,18 @@ function HeroSection() {
       });
   };
 
-  const updateUserDetails = () => {
-    setUserDetails({
-      firstName,
-      lastName,
-      emailAddress,
-      phoneNumber,
-      noOfPassengers,
-      fareType,
-      totalCost,
-      routeId,
-    });
-  };
-
   const submitUserDetails = async () => {
     const submit = await instance
-      .post("/Booking", userDetails)
+      .post("/Booking", {
+        firstName,
+        lastName,
+        emailAddress,
+        phoneNumber,
+        noOfPassengers,
+        fareType,
+        totalCost,
+        routeId,
+      })
       .then(function (response) {
         console.log(response);
       });
@@ -203,7 +199,7 @@ function HeroSection() {
               setContactDetailsPage(false);
             }}
             goForward={() => {
-              updateUserDetails();
+              submitUserDetails();
             }}
           />
         )}
