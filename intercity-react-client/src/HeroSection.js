@@ -12,6 +12,7 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import moment from "moment";
 import ContactDetails from "./ContactDetails";
 import BookingSummary from "./BookingSummary";
+import Receipt from "./Receipt";
 
 function HeroSection() {
   const history = useHistory();
@@ -32,6 +33,7 @@ function HeroSection() {
   const [departureDate, setDepartureDate] = useState("");
   const [departureTime, setDepartureTime] = useState("");
   const [arrivalTime, setArrivalTime] = useState("");
+  const [referenceNumber, setReferenceNumber] = useState("");
 
   const [routes, setRoutes] = useState([]);
 
@@ -61,7 +63,8 @@ function HeroSection() {
         routeId,
       })
       .then(function (response) {
-        console.log(response);
+        setReferenceNumber(response.data.referenceNumber);
+        setBookingSummaryPage(false);
       });
   };
 
@@ -108,7 +111,8 @@ function HeroSection() {
           className={`hero__bookingContainer ${
             (routes.length > 0 && "hideForm") ||
             (contactDetailsPage && "hideForm") ||
-            (bookingSummaryPage && "hideForm")
+            (bookingSummaryPage && "hideForm") ||
+            (referenceNumber.length > 0 && "hideForm")
           }`}
         >
           <div className="hero__bookingForm">
@@ -162,6 +166,7 @@ function HeroSection() {
             routes.length > 0 &&
             !contactDetailsPage &&
             !bookingSummaryPage &&
+            referenceNumber.length == 0 &&
             "hero__results__appear"
           }`}
         >
@@ -252,6 +257,13 @@ function HeroSection() {
             pay={() => {
               submitUserDetails();
             }}
+          />
+        )}
+        {referenceNumber && (
+          <Receipt
+            firstName={firstName}
+            lastName={lastName}
+            referenceNumber={referenceNumber}
           />
         )}
       </div>

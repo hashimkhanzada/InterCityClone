@@ -24,7 +24,7 @@ function BookingOption({ seatType, seatPrice }) {
         </>
       ) : (
         <>
-          <p>Non-refundable</p>
+          <p>Fully refundable</p>
           <p>
             Change or cancel up to 2 hours before departure for a full refund*
           </p>

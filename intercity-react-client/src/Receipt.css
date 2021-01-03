@@ -1,0 +1,64 @@
+.receipt {
+  background: rgb(233, 233, 233);
+  height: 94vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.receipt > svg {
+  color: #35a321;
+  font-size: 90px;
+  margin-bottom: 20px;
+  margin-top: 100px;
+}
+
+.receipt > h1 {
+  color: #35a321;
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+
+.receipt > h2 {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.receipt > h4 {
+  margin-bottom: 10px;
+}
+
+.receipt > p {
+  max-width: 75%;
+  text-align: center;
+}
+
+.receipt > p > span {
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.receipt > h3 {
+  color: #35a321;
+  font-size: 30px;
+}
+
+.receipt > Button {
+  background-color: #47c132;
+  border: 1px solid #47c132;
+  color: white;
+  cursor: pointer;
+  text-transform: inherit;
+  line-height: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  margin: 40px 10px;
+}
+
+.receipt > Button:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  color: #47c132;
+}
