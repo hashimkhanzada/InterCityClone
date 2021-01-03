@@ -60,8 +60,8 @@ function BookingSummary({
           <FormInput placeholderText="Name on Card" fullSpan />
 
           <div className="bookingSummary__payment__container__row2">
-            <input value="" placeholder="Expiry Date" />
-            <input value="" placeholder="Security Code" />
+            <input placeholder="Expiry Date" />
+            <input placeholder="Security Code" />
           </div>
           <div className="bookingSummary__payment__container__terms">
             <input type="checkbox" />

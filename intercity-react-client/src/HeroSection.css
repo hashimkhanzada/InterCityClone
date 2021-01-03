@@ -27,7 +27,7 @@
 }
 
 .hero__results__appear {
-  height: max-content;
+  height: 94.3vh;
   width: 100%;
   display: flex;
   flex-direction: column;

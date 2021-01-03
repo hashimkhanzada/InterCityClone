@@ -58,6 +58,7 @@ function ManageSection() {
               .delete(`/Booking/${bookingReference}`)
               .then(function (response) {
                 setReferenceNumber("");
+                setEmail("");
                 setManageBookingSection(false);
               });
           },
