@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./HeroSection.css";
-import FormInput from "./FormInput";
+import FormInput from "../components/FormInput";
 import { Button } from "@material-ui/core";
-import { instance } from "./axios";
+import { instance } from "../axios";
 import { useHistory } from "react-router-dom";
-import RouteRow from "./RouteRow";
+import RouteRow from "../components/RouteRow";
 import EditIcon from "@material-ui/icons/Edit";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import moment from "moment";
-import ContactDetails from "./ContactDetails";
-import BookingSummary from "./BookingSummary";
-import Receipt from "./Receipt";
+import ContactDetails from "../components/ContactDetails";
+import BookingSummary from "../components/BookingSummary";
+import Receipt from "../components/Receipt";
 
 function HeroSection() {
   const history = useHistory();

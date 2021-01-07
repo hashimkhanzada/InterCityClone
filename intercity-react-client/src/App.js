@@ -1,9 +1,8 @@
 import "./App.css";
-import Navbar from "./Navbar";
-import HeroSection from "./HeroSection";
+import Navbar from "./components/Navbar";
+import HeroSection from "./pages/HeroSection";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ManageSection from "./ManageSection";
-import ManageBooking from "./ManageBooking";
+import ManageSection from "./pages/ManageSection";
 
 function App() {
   return (

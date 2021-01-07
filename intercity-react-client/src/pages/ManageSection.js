@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./ManageSection.css";
-import FormInput from "./FormInput";
+import FormInput from "../components/FormInput";
 import { Button } from "@material-ui/core";
-import ManageBooking from "./ManageBooking";
-import { instance } from "./axios";
+import ManageBooking from "../components/ManageBooking";
+import { instance } from "../axios";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
