@@ -3,7 +3,13 @@ import "./Receipt.css";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import { Button } from "@material-ui/core";
 
-function Receipt({ firstName, lastName, referenceNumber }) {
+type Props = {
+  firstName?: string;
+  lastName?: string;
+  referenceNumber?: string;
+};
+
+const Receipt = ({ firstName, lastName, referenceNumber }: Props) => {
   return (
     <div className="receipt">
       <CheckCircleIcon />
@@ -24,6 +30,6 @@ function Receipt({ firstName, lastName, referenceNumber }) {
       </p>
     </div>
   );
-}
+};
 
 export default Receipt;

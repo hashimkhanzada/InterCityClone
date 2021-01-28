@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, MouseEventHandler } from "react";
 import "./RouteRow.css";
 import AcUnitIcon from "@material-ui/icons/AcUnit";
 import WorkIcon from "@material-ui/icons/Work";
@@ -8,7 +8,23 @@ import BookingOption from "./BookingOption";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 
-function RouteRow({
+type Props = {
+  departureTime?: string;
+  arrivalTime?: string;
+  standardPrice?: number;
+  fromCity?: string;
+  toCity?: string;
+  routeId?: number;
+  standardSeatPrice: number;
+  flexiSeatPrice: number;
+  fromCityBusStop?: string;
+  toCityBusStop?: string;
+  numberOfAdults: number;
+  bookStandard?: MouseEventHandler;
+  bookFlexi?: MouseEventHandler;
+};
+
+const RouteRow = ({
   departureTime,
   arrivalTime,
   standardPrice,
@@ -22,7 +38,7 @@ function RouteRow({
   numberOfAdults,
   bookStandard,
   bookFlexi,
-}) {
+}: Props) => {
   const [routeDetails, setRouteDetails] = useState(false);
 
   const showDetails = () => {
@@ -148,6 +164,6 @@ function RouteRow({
       </div>
     </div>
   );
-}
+};
 
 export default RouteRow;

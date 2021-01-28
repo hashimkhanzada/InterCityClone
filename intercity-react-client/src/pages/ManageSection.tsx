@@ -19,9 +19,9 @@ function ManageSection() {
   const [toCityName, setToCityName] = useState("");
   const [departureTime, setDepartureTime] = useState("");
   const [arrivalTime, setArrivalTime] = useState("");
-  const [noOfPassengers, setNoOfPassengers] = useState("");
+  const [noOfPassengers, setNoOfPassengers] = useState(0);
   const [fareType, setFareType] = useState("");
-  const [routeId, setRouteId] = useState("");
+  const [routeId, setRouteId] = useState(0);
   const [fromCityBusStop, setFromCityBusStop] = useState("");
   const [toCityBusStop, setToCityBusStop] = useState("");
 

@@ -1,13 +1,31 @@
-import React, { useState } from "react";
+import React, { MouseEventHandler, ChangeEvent } from "react";
 import "./FormInput.css";
 import { DatePicker } from "@material-ui/pickers";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import SwapHorizRoundedIcon from "@material-ui/icons/SwapHorizRounded";
+import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
 
-function FormInput({
+type Props = {
+  changeText?: (event: ChangeEvent<HTMLInputElement>) => void;
+  changeDate?: (date: MaterialUiPickersDate) => void;
+  value?: string | number;
+  dateValue?: Date | null;
+  placeholderText?: string;
+  isDate?: boolean;
+  isNumber?: boolean;
+  increment?: MouseEventHandler;
+  decrement?: MouseEventHandler;
+  swapIcon?: boolean;
+  swapCities?: MouseEventHandler;
+  fullSpan?: boolean;
+};
+
+const FormInput = ({
+  changeDate,
   changeText,
   value,
+  dateValue,
   placeholderText,
   isDate,
   isNumber,
@@ -16,7 +34,7 @@ function FormInput({
   swapIcon,
   swapCities,
   fullSpan,
-}) {
+}: Props) => {
   return (
     <>
       <div className="formInput">
@@ -35,14 +53,13 @@ function FormInput({
               }}
               variant="inline"
               label="Departure Date"
-              value={value}
-              onChange={changeText}
+              value={dateValue}
+              onChange={changeDate}
               fullWidth
             />
           ) : isNumber ? (
             <>
               <input value="Passenger" />
-
               <RemoveIcon className="counterIcon" onClick={decrement} />
               <p>{value}</p>
               <AddIcon className="counterIcon" onClick={increment} />
@@ -68,6 +85,6 @@ function FormInput({
       </div>
     </>
   );
-}
+};
 
 export default FormInput;

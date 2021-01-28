@@ -3,7 +3,7 @@ import "./Navbar.css";
 import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navbar__left">
@@ -37,6 +37,6 @@ function Navbar() {
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;

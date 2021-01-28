@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, MouseEventHandler } from "react";
 import "./ManageBooking.css";
 import { Button } from "@material-ui/core";
 import AcUnitIcon from "@material-ui/icons/AcUnit";
@@ -6,7 +6,23 @@ import WorkIcon from "@material-ui/icons/Work";
 import WifiIcon from "@material-ui/icons/Wifi";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 
-function ManageBooking({
+type Props = {
+  firstName?: string;
+  bookingReference?: string;
+  departureDate?: string;
+  fromCityName?: string;
+  toCityName?: string;
+  departureTime?: string;
+  arrivalTime?: string;
+  noOfPassengers?: number;
+  fareType?: string;
+  routeId?: number;
+  fromCityBusStop?: string;
+  toCityBusStop?: string;
+  deleteBooking?: MouseEventHandler;
+};
+
+const ManageBooking = ({
   firstName,
   bookingReference,
   departureDate,
@@ -20,7 +36,7 @@ function ManageBooking({
   fromCityBusStop,
   toCityBusStop,
   deleteBooking,
-}) {
+}: Props) => {
   const [selectedManageType, setselectedManageType] = useState(0);
 
   const [viewText, setViewText] = useState("View Details");
@@ -158,6 +174,6 @@ function ManageBooking({
       </div>
     </>
   );
-}
+};
 
 export default ManageBooking;

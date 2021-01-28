@@ -1,10 +1,23 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import "./BookingSummary.css";
 import FormInput from "./FormInput";
 import { Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 
-function BookingSummary({
+type Props = {
+  fromCity: string;
+  toCity: string;
+  routeId: number;
+  departureDate: string;
+  departureTime: string;
+  arrivalTime: string;
+  fareType: string;
+  noOfPassengers: number;
+  totalCost: number;
+  pay: MouseEventHandler;
+};
+
+const BookingSummary = ({
   fromCity,
   toCity,
   routeId,
@@ -15,7 +28,7 @@ function BookingSummary({
   noOfPassengers,
   totalCost,
   pay,
-}) {
+}: Props) => {
   return (
     <div className="bookingSummary">
       <div className="bookingSummary__summary">
@@ -87,6 +100,6 @@ function BookingSummary({
       </div>
     </div>
   );
-}
+};
 
 export default BookingSummary;

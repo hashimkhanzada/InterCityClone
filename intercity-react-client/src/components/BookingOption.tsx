@@ -2,7 +2,12 @@ import React from "react";
 import "./BookingOption.css";
 import { Button } from "@material-ui/core";
 
-function BookingOption({ seatType, seatPrice }) {
+type Props = {
+  seatType: string;
+  seatPrice: number;
+};
+
+const BookingOption = ({ seatType, seatPrice }: Props) => {
   return (
     <div className="bookingOption">
       <h3>{seatType}</h3>
@@ -33,6 +38,6 @@ function BookingOption({ seatType, seatPrice }) {
       )}
     </div>
   );
-}
+};
 
 export default BookingOption;

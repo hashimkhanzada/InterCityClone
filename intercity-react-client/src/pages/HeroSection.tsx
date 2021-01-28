@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, MouseEventHandler } from "react";
 import "./HeroSection.css";
 import FormInput from "../components/FormInput";
 import { Button } from "@material-ui/core";
 import { instance } from "../axios";
-import { useHistory } from "react-router-dom";
 import RouteRow from "../components/RouteRow";
 import EditIcon from "@material-ui/icons/Edit";
 import "date-fns";
@@ -14,11 +13,21 @@ import ContactDetails from "../components/ContactDetails";
 import BookingSummary from "../components/BookingSummary";
 import Receipt from "../components/Receipt";
 
-function HeroSection() {
-  const history = useHistory();
+interface RouteInfo {
+  routeId: number;
+  departureTime: string;
+  arrivalTime: string;
+  standardPrice: number;
+  flexiPrice: number;
+  fromCity: { busStop: string };
+  toCity: { busStop: string };
+  departureDate: string;
+}
+
+const HeroSection = () => {
   const [fromCity, setFromCity] = useState("Wanganui");
   const [toCity, setToCity] = useState("Palmerston North");
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [noOfPassengers, setnoOfPassengers] = useState(1);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -28,14 +37,13 @@ function HeroSection() {
   const [totalCost, setTotalCost] = useState(0);
   const [routeId, setRouteId] = useState(0);
   const [contactDetailsPage, setContactDetailsPage] = useState(false);
-  const [userDetails, setUserDetails] = useState({});
   const [bookingSummaryPage, setBookingSummaryPage] = useState(false);
   const [departureDate, setDepartureDate] = useState("");
   const [departureTime, setDepartureTime] = useState("");
   const [arrivalTime, setArrivalTime] = useState("");
   const [referenceNumber, setReferenceNumber] = useState("");
 
-  const [routes, setRoutes] = useState([]);
+  const [routes, setRoutes] = useState<any>([]);
 
   const searchPage = async () => {
     const convertedDate = moment(selectedDate).format("ddd, D MMM YYYY");
@@ -88,12 +96,12 @@ function HeroSection() {
   };
 
   const addBooking = (
-    price,
-    id,
-    seatType,
-    departDate,
-    arriveTime,
-    departTime
+    price: number,
+    id: number,
+    seatType: string,
+    departDate: string,
+    arriveTime: string,
+    departTime: string
   ) => {
     setFareType(seatType);
     setTotalCost(price);
@@ -136,8 +144,8 @@ function HeroSection() {
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <FormInput
                   isDate
-                  value={selectedDate}
-                  changeText={setSelectedDate}
+                  dateValue={selectedDate}
+                  changeDate={setSelectedDate}
                 />
               </MuiPickersUtilsProvider>
               <FormInput
@@ -177,14 +185,14 @@ function HeroSection() {
             </h2>
 
             <div className="hero__editSearchButton">
-              <Button variant="outlined" onClick={editSearch} disable>
+              <Button variant="outlined" onClick={editSearch}>
                 <EditIcon />
                 Edit Search
               </Button>
             </div>
           </div>
           <div className="hero__routeResults">
-            {routes?.map((route) => (
+            {routes?.map((route: RouteInfo) => (
               <>
                 <RouteRow
                   key={route.routeId}
@@ -269,6 +277,6 @@ function HeroSection() {
       </div>
     </div>
   );
-}
+};
 
 export default HeroSection;

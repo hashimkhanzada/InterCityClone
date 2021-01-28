@@ -4,7 +4,7 @@ import HeroSection from "./pages/HeroSection";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ManageSection from "./pages/ManageSection";
 
-function App() {
+const App = () => {
   return (
     <div className="app">
       <Router>
@@ -21,6 +21,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;
