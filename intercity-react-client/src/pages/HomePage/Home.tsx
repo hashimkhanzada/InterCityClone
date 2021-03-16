@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Home.css";
-import FormInput from "../../components/FormInput";
+import AutoCompleteInput from "../../controls/AutoCompleteInput";
+import DateInput from "../../controls/DateInput";
+import NumberInput from "../../controls/NumberInput";
 import { Button } from "@material-ui/core";
 import { createAPIEndpoint, ENDPOINTS } from "../../api/axios";
 import { RouteRow } from "../../components";
@@ -87,11 +89,6 @@ const HeroSection = () => {
     }
   };
 
-  const swapCityNames = () => {
-    setFromCity(toCity);
-    setToCity(fromCity);
-  };
-
   const editSearch = () => {
     setRoutes([]);
   };
@@ -128,30 +125,28 @@ const HeroSection = () => {
             <h2>Where would you like to go?</h2>
 
             <div className="row1">
-              <FormInput
-                value={fromCity}
-                changeText={(e) => setFromCity(e.target.value)}
+              <AutoCompleteInput
+                changeText={(e) => {
+                  console.log(e.target.value);
+                  setFromCity(e.target.value);
+                }}
                 placeholderText="From"
-                swapIcon
-                swapCities={swapCityNames}
               />
-              <FormInput
+
+              <AutoCompleteInput
                 placeholderText="To"
-                value={toCity}
                 changeText={(e) => setToCity(e.target.value)}
               />
             </div>
             <div className="row2">
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <FormInput
-                  isDate
+                <DateInput
                   dateValue={selectedDate}
                   changeDate={setSelectedDate}
                 />
               </MuiPickersUtilsProvider>
-              <FormInput
+              <NumberInput
                 value={noOfPassengers}
-                isNumber
                 increment={incrementPassengers}
                 decrement={decrementPassengers}
               />

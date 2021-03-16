@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Manage.css";
-import FormInput from "../../components/FormInput";
+import FormInput from "../../controls/FormInput";
 import { Button } from "@material-ui/core";
 import { ManageBooking } from "../../components";
 import { createAPIEndpoint, ENDPOINTS } from "../../api/axios";
