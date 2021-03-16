@@ -34,8 +34,8 @@ namespace InterCityWebAPI
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
             services.AddDbContext<InterCityDbContext>(options =>
-            {
-                options.UseSqlite(Configuration.GetConnectionString("SqliteConnection"));
+            { 
+                options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection")); 
             });
 
             services.AddCors(c =>

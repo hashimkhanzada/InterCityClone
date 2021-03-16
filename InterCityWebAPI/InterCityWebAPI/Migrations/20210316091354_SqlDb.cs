@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace InterCityWebAPI.Migrations
 {
-    public partial class CreateDb : Migration
+    public partial class SqlDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,8 +11,8 @@ namespace InterCityWebAPI.Migrations
                 name: "Cities",
                 columns: table => new
                 {
-                    CityName = table.Column<string>(type: "TEXT", nullable: false),
-                    BusStop = table.Column<string>(type: "TEXT", nullable: true)
+                    CityName = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    BusStop = table.Column<string>(type: "nvarchar(200)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -23,15 +23,15 @@ namespace InterCityWebAPI.Migrations
                 name: "Routes",
                 columns: table => new
                 {
-                    RouteId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    FromCityName = table.Column<string>(type: "TEXT", nullable: false),
-                    ToCityName = table.Column<string>(type: "TEXT", nullable: false),
-                    DepartureDate = table.Column<string>(type: "TEXT", nullable: false),
-                    DepartureTime = table.Column<string>(type: "TEXT", nullable: false),
-                    ArrivalTime = table.Column<string>(type: "TEXT", nullable: true),
-                    StandardPrice = table.Column<float>(type: "REAL", nullable: false),
-                    FlexiPrice = table.Column<float>(type: "REAL", nullable: false)
+                    RouteId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FromCityName = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    ToCityName = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    DepartureDate = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    DepartureTime = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    ArrivalTime = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    StandardPrice = table.Column<float>(type: "real", nullable: false),
+                    FlexiPrice = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,15 +54,15 @@ namespace InterCityWebAPI.Migrations
                 name: "Bookings",
                 columns: table => new
                 {
-                    ReferenceNumber = table.Column<Guid>(type: "TEXT", nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    LastName = table.Column<string>(type: "TEXT", nullable: true),
-                    EmailAddress = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    NoOfPassengers = table.Column<int>(type: "INTEGER", nullable: false),
-                    FareType = table.Column<string>(type: "TEXT", nullable: true),
-                    TotalCost = table.Column<float>(type: "REAL", nullable: false),
-                    RouteId = table.Column<int>(type: "INTEGER", nullable: false)
+                    ReferenceNumber = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    EmailAddress = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    NoOfPassengers = table.Column<int>(type: "int", nullable: false),
+                    FareType = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    TotalCost = table.Column<float>(type: "real", nullable: false),
+                    RouteId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,7 +72,7 @@ namespace InterCityWebAPI.Migrations
                         column: x => x.RouteId,
                         principalTable: "Routes",
                         principalColumn: "RouteId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
