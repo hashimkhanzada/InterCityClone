@@ -86,13 +86,15 @@ namespace InterCityWebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<RouteModel>> PostRouteModel(RouteModel routeModel)
         {
-            routeModel.StandardPrice = 30;
-            routeModel.FlexiPrice = 40;
-            routeModel.DepartureDate = DateTime.Now.ToString("ddd, d MMM yyyy");
-            routeModel.DepartureTime = DateTime.Now.ToString("hh:mm tt");
-            routeModel.ArrivalTime = DateTime.Now.ToString("hh:mm tt");
+            
+                routeModel.StandardPrice = 30;
+                routeModel.FlexiPrice = 40; 
+                routeModel.DepartureTime = DateTime.Now.ToString("hh:mm tt");
+                routeModel.ArrivalTime = DateTime.Now.AddHours(2).ToString("hh:mm tt"); 
 
-            _context.Routes.Add(routeModel);
+                _context.Routes.Add(routeModel);
+
+            
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRouteModel", new { id = routeModel.RouteId }, routeModel);

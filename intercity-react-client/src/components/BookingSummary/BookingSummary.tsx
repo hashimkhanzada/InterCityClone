@@ -1,6 +1,6 @@
 import React, { MouseEventHandler } from "react";
 import "./BookingSummary.css";
-import FormInput from "./FormInput";
+import FormInput from "../FormInput";
 import { Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 

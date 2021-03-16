@@ -17,7 +17,7 @@ const BookingOption = ({ seatType, seatPrice }: Props) => {
       </h2>
       <Button variant="outlined">BOOK THIS</Button>
 
-      {seatType == "Standard" ? (
+      {seatType === "Standard" ? (
         <>
           <p>Non-refundable</p>
           <p>Change or cancel up to 2 hours before departure*</p>

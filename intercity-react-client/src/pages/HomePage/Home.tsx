@@ -1,17 +1,17 @@
-import React, { useState, MouseEventHandler } from "react";
-import "./HeroSection.css";
-import FormInput from "../components/FormInput";
+import React, { useState } from "react";
+import "./Home.css";
+import FormInput from "../../components/FormInput";
 import { Button } from "@material-ui/core";
-import { instance } from "../axios";
-import RouteRow from "../components/RouteRow";
+import { createAPIEndpoint, ENDPOINTS } from "../../api/axios";
+import { RouteRow } from "../../components";
 import EditIcon from "@material-ui/icons/Edit";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import moment from "moment";
-import ContactDetails from "../components/ContactDetails";
-import BookingSummary from "../components/BookingSummary";
-import Receipt from "../components/Receipt";
+import { ContactDetails } from "../../components";
+import { BookingSummary } from "../../components";
+import { Receipt } from "../../components";
 
 interface RouteInfo {
   routeId: number;
@@ -48,19 +48,20 @@ const HeroSection = () => {
   const searchPage = async () => {
     const convertedDate = moment(selectedDate).format("ddd, D MMM YYYY");
 
-    //TODO - refactor
-    const request = await instance
-      .get(
-        `/Route/getRouteByNameDate?fromCity=${fromCity}&toCity=${toCity}&date=${convertedDate}`
-      )
-      .then((response) => {
-        setRoutes(response.data);
+    await createAPIEndpoint(ENDPOINTS.ROUTE)
+      .createRoute(fromCity, toCity, convertedDate)
+      .then(async () => {
+        await createAPIEndpoint(ENDPOINTS.ROUTELIST)
+          .fetchByCityAndDate(fromCity, toCity, convertedDate)
+          .then((response: any) => {
+            setRoutes(response.data);
+          });
       });
   };
 
   const submitUserDetails = async () => {
-    const submit = await instance
-      .post("/Booking", {
+    await createAPIEndpoint(ENDPOINTS.BOOKINGS)
+      .createBooking(
         firstName,
         lastName,
         emailAddress,
@@ -68,9 +69,9 @@ const HeroSection = () => {
         noOfPassengers,
         fareType,
         totalCost,
-        routeId,
-      })
-      .then(function (response) {
+        routeId
+      )
+      .then((response: any) => {
         setReferenceNumber(response.data.referenceNumber);
         setBookingSummaryPage(false);
       });
@@ -81,7 +82,7 @@ const HeroSection = () => {
   };
 
   const decrementPassengers = () => {
-    if (noOfPassengers > 0) {
+    if (noOfPassengers > 1) {
       setnoOfPassengers(noOfPassengers - 1);
     }
   };
@@ -161,7 +162,7 @@ const HeroSection = () => {
                   Search
                 </Button>
               ) : (
-                <Button variant="outlined" onClick={searchPage} disabled>
+                <Button variant="outlined" disabled>
                   Search
                 </Button>
               )}
@@ -174,7 +175,7 @@ const HeroSection = () => {
             routes.length > 0 &&
             !contactDetailsPage &&
             !bookingSummaryPage &&
-            referenceNumber.length == 0 &&
+            referenceNumber.length === 0 &&
             "hero__results__appear"
           }`}
         >

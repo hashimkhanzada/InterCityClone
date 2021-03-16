@@ -4,7 +4,7 @@ import AcUnitIcon from "@material-ui/icons/AcUnit";
 import WorkIcon from "@material-ui/icons/Work";
 import WifiIcon from "@material-ui/icons/Wifi";
 import AirlineSeatReclineExtraIcon from "@material-ui/icons/AirlineSeatReclineExtra";
-import BookingOption from "./BookingOption";
+import BookingOption from "./BookingOption/BookingOption";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 

@@ -61,7 +61,7 @@ const ManageBooking = ({
         <div className="manageBooking__manageType">
           <p
             className={`${
-              selectedManageType == 0 && "manageBooking__manageType__selected"
+              selectedManageType === 0 && "manageBooking__manageType__selected"
             }`}
             onClick={() => {
               setselectedManageType(0);
@@ -71,7 +71,7 @@ const ManageBooking = ({
           </p>
           <p
             className={`${
-              selectedManageType == 1 && "manageBooking__manageType__selected"
+              selectedManageType === 1 && "manageBooking__manageType__selected"
             }`}
             onClick={() => {
               setselectedManageType(1);
@@ -81,7 +81,7 @@ const ManageBooking = ({
           </p>
           <p
             className={`${
-              selectedManageType == 2 && "manageBooking__manageType__selected"
+              selectedManageType === 2 && "manageBooking__manageType__selected"
             }`}
             onClick={() => {
               setselectedManageType(2);

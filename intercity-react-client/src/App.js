@@ -1,8 +1,8 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
-import HeroSection from "./pages/HeroSection";
+import { Navbar } from "./components";
+import Home from "./pages/HomePage/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ManageSection from "./pages/ManageSection";
+import Manage from "./pages/ManagePage/Manage";
 
 const App = () => {
   return (
@@ -11,11 +11,11 @@ const App = () => {
         <Navbar />
         <Switch>
           <Route path="/manage">
-            <ManageSection />
+            <Manage />
           </Route>
 
           <Route path="/">
-            <HeroSection />
+            <Home />
           </Route>
         </Switch>
       </Router>

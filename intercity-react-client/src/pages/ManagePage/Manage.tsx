@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import "./ManageSection.css";
-import FormInput from "../components/FormInput";
+import "./Manage.css";
+import FormInput from "../../components/FormInput";
 import { Button } from "@material-ui/core";
-import ManageBooking from "../components/ManageBooking";
-import { instance } from "../axios";
+import { ManageBooking } from "../../components";
+import { createAPIEndpoint, ENDPOINTS } from "../../api/axios";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
-function ManageSection() {
+const ManageSection = () => {
   const [referenceNumber, setReferenceNumber] = useState("");
   const [email, setEmail] = useState("");
   const [selectedMemberType, setselectedMemberType] = useState(1);
@@ -26,9 +26,9 @@ function ManageSection() {
   const [toCityBusStop, setToCityBusStop] = useState("");
 
   const searchBooking = async () => {
-    const request = await instance
-      .get(`/Booking/${referenceNumber}`)
-      .then((response) => {
+    await createAPIEndpoint(ENDPOINTS.BOOKINGS)
+      .getBookings(referenceNumber)
+      .then((response: any) => {
         setFirstName(response.data.firstName);
         setBookingReference(response.data.referenceNumber);
         setDepartureDate(response.data.route.departureDate);
@@ -54,9 +54,9 @@ function ManageSection() {
         {
           label: "Yes",
           onClick: async () => {
-            const submit = await instance
-              .delete(`/Booking/${bookingReference}`)
-              .then(function (response) {
+            await createAPIEndpoint(ENDPOINTS.BOOKINGS)
+              .deleteBooking(bookingReference)
+              .then(() => {
                 setReferenceNumber("");
                 setEmail("");
                 setManageBookingSection(false);
@@ -85,7 +85,7 @@ function ManageSection() {
         <div className="manageSection__memberType">
           <p
             className={`${
-              selectedMemberType == 0 && "manageSection__memberType__selected"
+              selectedMemberType === 0 && "manageSection__memberType__selected"
             }`}
             onClick={() => {
               setselectedMemberType(0);
@@ -95,7 +95,7 @@ function ManageSection() {
           </p>
           <p
             className={`${
-              selectedMemberType == 1 && "manageSection__memberType__selected"
+              selectedMemberType === 1 && "manageSection__memberType__selected"
             }`}
             onClick={() => {
               setselectedMemberType(1);
@@ -105,7 +105,7 @@ function ManageSection() {
           </p>
           <p
             className={`${
-              selectedMemberType == 2 && "manageSection__memberType__selected"
+              selectedMemberType === 2 && "manageSection__memberType__selected"
             }`}
             onClick={() => {
               setselectedMemberType(2);
@@ -121,13 +121,13 @@ function ManageSection() {
         <div className="manageSection__formContainer">
           <FormInput
             value={referenceNumber}
-            changeText={(e) => setReferenceNumber(e.target.value)}
+            changeText={(e: any) => setReferenceNumber(e.target.value)}
             placeholderText="Booking reference"
             fullSpan
           />
           <FormInput
             value={email}
-            changeText={(e) => setEmail(e.target.value)}
+            changeText={(e: any) => setEmail(e.target.value)}
             placeholderText="Email"
             fullSpan
           />
@@ -162,6 +162,6 @@ function ManageSection() {
       )}
     </>
   );
-}
+};
 
 export default ManageSection;

@@ -1,6 +1,6 @@
 import React, { ChangeEvent, MouseEventHandler } from "react";
 import "./ContactDetails.css";
-import FormInput from "./FormInput";
+import FormInput from "../FormInput";
 import { Button } from "@material-ui/core";
 
 type Props = {
