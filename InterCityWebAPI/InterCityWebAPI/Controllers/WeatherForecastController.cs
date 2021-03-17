@@ -13,7 +13,7 @@ namespace InterCityWebAPI.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Hashim", "Khanzada", "asdasd", "asdasd", "asdd", "asdd", "asdd", "cxz", "gfd", "wer"
         };
 
         private readonly ILogger<WeatherForecastController> _logger;

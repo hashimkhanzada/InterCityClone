@@ -29,13 +29,16 @@ namespace InterCityWebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var cloudSQL = Configuration["CloudSQLServerConnection"] ?? Configuration.GetConnectionString("LocalSqlServerConnection");
+            
             services.AddControllers().AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
+
             services.AddDbContext<InterCityDbContext>(options =>
             { 
-                options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection")); 
+                options.UseSqlServer(cloudSQL); 
             });
 
             services.AddCors(c =>
