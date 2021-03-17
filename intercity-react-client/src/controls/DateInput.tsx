@@ -4,7 +4,7 @@ import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
 import "./Input.css";
 
 interface Props {
-  changeDate?: (date: MaterialUiPickersDate) => void;
+  changeDate: (date: MaterialUiPickersDate) => void;
   dateValue?: Date | null;
 }
 
