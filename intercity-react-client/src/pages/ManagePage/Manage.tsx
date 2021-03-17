@@ -65,6 +65,9 @@ const ManageSection = () => {
         },
         {
           label: "No",
+          onClick: () => {
+            console.log("cancelled");
+          },
         },
       ],
     });
