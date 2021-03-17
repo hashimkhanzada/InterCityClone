@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish="intercity-react-client/build"
+  publish="build"
   base = "intercity-react-client"
   
 [[redirects]]
