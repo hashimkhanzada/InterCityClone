@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const BASE_URL = "https://localhost:44366/api/";
+const BASE_URL =
+  "http://intercitycloneapi.australiaeast.azurecontainer.io/api/";
+//https://localhost:44366/api/
 
 export const ENDPOINTS = {
   ROUTE: "Route",

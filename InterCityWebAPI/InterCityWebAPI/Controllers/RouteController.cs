@@ -46,39 +46,8 @@ namespace InterCityWebAPI.Controllers
         public async Task<ActionResult<IEnumerable<RouteModel>>> GetRouteByNameDate(string fromCity, string toCity, string date)
         {
             List<RouteModel> routes = await _context.Routes.Where(p => p.FromCityName.ToLower().Replace(" ", "") == fromCity.ToLower().Replace(" ", "") && p.ToCityName.ToLower().Replace(" ", "") == toCity.ToLower().Replace(" ", "") && p.DepartureDate.ToLower().Replace(" ", "") == date.ToLower().Replace(" ", "")).Include(s => s.FromCity).Include(s => s.ToCity).ToListAsync();
-             
+
             return routes;
-        }
-
-        // PUT: api/Route/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRouteModel(int id, RouteModel routeModel)
-        {
-            if (id != routeModel.RouteId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(routeModel).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RouteModelExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
         }
 
         // POST: api/Route
@@ -86,16 +55,49 @@ namespace InterCityWebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<RouteModel>> PostRouteModel(RouteModel routeModel)
         {
-            
-                routeModel.StandardPrice = 30;
-                routeModel.FlexiPrice = 40; 
-                routeModel.DepartureTime = DateTime.Now.ToString("hh:mm tt");
-                routeModel.ArrivalTime = DateTime.Now.AddHours(2).ToString("hh:mm tt"); 
+            if (!RouteModelExistsOnDate(routeModel.DepartureDate))
+            {
+                //TODO - hacky code - alternative for seeding data in the database
 
-                _context.Routes.Add(routeModel);
+                List<RouteModel> routes = new List<RouteModel>
+                {
+                    new RouteModel
+                    {
+                        FromCityName = routeModel.FromCityName,
+                        ToCityName = routeModel.ToCityName,
+                        DepartureDate = routeModel.DepartureDate,
+                        StandardPrice = 30,
+                        FlexiPrice = 40,
+                        DepartureTime = DateTime.Now.AddHours(1).ToString("hh:mm tt"),
+                        ArrivalTime = DateTime.Now.AddHours(2).ToString("hh:mm tt")
+                    },
 
-            
-            await _context.SaveChangesAsync();
+                    new RouteModel
+                    {
+                        FromCityName = routeModel.FromCityName,
+                        ToCityName = routeModel.ToCityName,
+                        DepartureDate = routeModel.DepartureDate,
+                        StandardPrice = 30,
+                        FlexiPrice = 40,
+                        DepartureTime = DateTime.Now.AddHours(3).ToString("hh:mm tt"),
+                        ArrivalTime = DateTime.Now.AddHours(4).ToString("hh:mm tt")
+                    },
+
+                    new RouteModel
+                    {
+                        FromCityName = routeModel.FromCityName,
+                        ToCityName = routeModel.ToCityName,
+                        DepartureDate = routeModel.DepartureDate,
+                        StandardPrice = 30,
+                        FlexiPrice = 40,
+                        DepartureTime = DateTime.Now.AddHours(5).ToString("hh:mm tt"),
+                        ArrivalTime = DateTime.Now.AddHours(6).ToString("hh:mm tt")
+                    }
+                };
+
+                _context.Routes.AddRange(routes);
+                await _context.SaveChangesAsync();
+            }
 
             return CreatedAtAction("GetRouteModel", new { id = routeModel.RouteId }, routeModel);
         }
@@ -117,9 +119,9 @@ namespace InterCityWebAPI.Controllers
         }
 
 
-        private bool RouteModelExists(int id)
+        private bool RouteModelExistsOnDate(string departDate)
         {
-            return _context.Routes.Any(e => e.RouteId == id);
+            return _context.Routes.Any(e => e.DepartureDate == departDate);
         }
     }
 }
