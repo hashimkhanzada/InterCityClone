@@ -49,7 +49,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     if (window.innerWidth <= 960) {
-      Alert("This app is currently only suitable for desktop mode")
+      alert("This app is currently only suitable for desktop mode")
     }
   }, []);
 
