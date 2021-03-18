@@ -47,6 +47,12 @@ const HeroSection = () => {
 
   const [routes, setRoutes] = useState<any>([]);
 
+  useEffect(() => {
+    if (window.innerWidth <= 960) {
+      Alert("This app is currently only suitable for desktop mode")
+    }
+  }, []);
+
   const searchPage = async () => {
     const convertedDate = moment(selectedDate).format("ddd, D MMM YYYY");
 
