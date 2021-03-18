@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 import AutoCompleteInput from "../../controls/AutoCompleteInput";
 import DateInput from "../../controls/DateInput";
