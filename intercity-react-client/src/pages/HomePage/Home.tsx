@@ -14,6 +14,7 @@ import moment from "moment";
 import { ContactDetails } from "../../components";
 import { BookingSummary } from "../../components";
 import { Receipt } from "../../components";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface RouteInfo {
   routeId: number;
@@ -44,11 +45,14 @@ const HeroSection = () => {
   const [departureTime, setDepartureTime] = useState("");
   const [arrivalTime, setArrivalTime] = useState("");
   const [referenceNumber, setReferenceNumber] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [routes, setRoutes] = useState<any>([]);
 
   const searchPage = async () => {
     const convertedDate = moment(selectedDate).format("ddd, D MMM YYYY");
+
+    setLoading(true);
 
     await createAPIEndpoint(ENDPOINTS.ROUTE)
       .createRoute(fromCity, toCity, convertedDate)
@@ -56,6 +60,7 @@ const HeroSection = () => {
         await createAPIEndpoint(ENDPOINTS.ROUTELIST)
           .fetchByCityAndDate(fromCity, toCity, convertedDate)
           .then((response: any) => {
+            setLoading(false);
             setRoutes(response.data);
           });
       });
@@ -153,9 +158,13 @@ const HeroSection = () => {
             </div>
             <div className="hero__button">
               {toCity && fromCity ? (
-                <Button variant="outlined" onClick={searchPage}>
-                  Search
-                </Button>
+                loading ? (
+                  <AiOutlineLoading3Quarters className="loadingIcon" />
+                ) : (
+                  <Button variant="outlined" onClick={searchPage}>
+                    Search
+                  </Button>
+                )
               ) : (
                 <Button variant="outlined" disabled>
                   Search
