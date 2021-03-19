@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 import AutoCompleteInput from "../../controls/AutoCompleteInput";
 import DateInput from "../../controls/DateInput";
@@ -48,6 +48,12 @@ const HeroSection = () => {
   const [loading, setLoading] = useState(false);
 
   const [routes, setRoutes] = useState<any>([]);
+
+  useEffect(() => {
+    if (window.innerWidth <= 960) {
+      alert("This app is currently only suitable for desktop mode")
+    }
+  }, []);
 
   const searchPage = async () => {
     const convertedDate = moment(selectedDate).format("ddd, D MMM YYYY");
