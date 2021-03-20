@@ -60,7 +60,7 @@ const RouteRow = ({
           <div className="routeRow__tripLine" />
           <div className="routeRow__tripInfo">
             <p>Direct Service</p>
-            <p>1h 30m</p>
+            <p>2h 00m</p>
           </div>
           <div className="routeRow__tripLine" />
           <div className="routeRow__fareTime">
@@ -105,7 +105,7 @@ const RouteRow = ({
                 <LocationOnIcon />
               </div>
               <div className="routeRow__info__details__busStop__duration">
-                <p>1h 30m</p> <h3>DURATION</h3>
+                <p>2h 00m</p> <h3>DURATION</h3>
               </div>
               <div className="routeRow__info__details__busStopInfo">
                 <p>{arrivalTime}</p> <h3>{toCityBusStop}</h3>

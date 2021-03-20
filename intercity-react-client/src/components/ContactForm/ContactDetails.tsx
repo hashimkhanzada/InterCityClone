@@ -58,8 +58,8 @@ const ContactDetails = ({
         <div className="contactDetails__formContainer__row3">
           <FormInput
             value="New Zealand (+64)"
-            changeText={phoneNumberChange}
             placeholderText="Phone"
+            isReadOnly
           />
           <FormInput
             value={phoneNumber}

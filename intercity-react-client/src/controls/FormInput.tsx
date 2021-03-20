@@ -9,9 +9,16 @@ type Props = {
   placeholderText?: string;
 
   fullSpan?: boolean;
+  isReadOnly?: boolean;
 };
 
-const FormInput = ({ changeText, value, placeholderText, fullSpan }: Props) => {
+const FormInput = ({
+  changeText,
+  value,
+  placeholderText,
+  fullSpan,
+  isReadOnly,
+}: Props) => {
   return (
     <>
       <div className="formInput">
@@ -23,6 +30,7 @@ const FormInput = ({ changeText, value, placeholderText, fullSpan }: Props) => {
             onChange={changeText}
             placeholder={placeholderText}
             className={`${fullSpan && "Input__fullSpan"}`}
+            readOnly={isReadOnly}
           />
         </div>
       </div>
