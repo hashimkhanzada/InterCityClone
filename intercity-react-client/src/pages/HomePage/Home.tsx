@@ -53,6 +53,8 @@ const HeroSection = () => {
     if (window.innerWidth <= 960) {
       alert("This app is currently only suitable for desktop mode");
     }
+
+    alert("Database has currently been disconnected");
   }, []);
 
   const searchPage = async () => {
